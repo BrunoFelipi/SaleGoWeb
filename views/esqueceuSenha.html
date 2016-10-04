@@ -1,0 +1,58 @@
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#email').focus();
+});
+</script>
+<div ng-controller="esqueceuSenhaCtrl" class="page-flexbox-wrapper">
+
+    <!-- Header -->
+    <header>
+        <nav class="nav-wrapper teal ">
+            <div class="container">
+                <a href="#/home" class="brand-logo">SaleGo</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <form name="formulario" ng-submit="enviarEmail()">
+            <div class="container" style="padding-top: 50px">
+                <div class="row">
+                    <div class="col s12 m10 l10 offset-m1 offset-l1">
+                        <div class="card horizontal">
+
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <h5>Esqueceu sua senha?</h5>
+                                    <p>
+                                        Informe seu email no campo abaixo que iremos lhe enviar um link para redefinir sua senha.
+                                    </p>
+
+                                    <br>
+                                    <div class="input-field">
+                                        <input id="email" type="email" name="email" class="validate" ng-model="email" required>
+                                        <label for="email" data-error="E-mail inválido">E-mail</label>
+                                    </div>
+                                </div>
+                                <div class="card-action">
+                                    <button type="submit" class="waves-effect waves-teal btn-flat teal-text">Enviar</button>
+                                    <a href="#/login" class="waves-effect waves-red btn-flat right red-text">Cancelar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <!-- Footes -->
+    <footer class="page-footer teal">
+        <div class="footer-copyright">
+            <div class="container">
+                © 2016 Copyright - SaleGo
+            </div>
+        </div>
+    </footer>
+
+</div>

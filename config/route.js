@@ -3,7 +3,10 @@ app.config(function($routeProvider){
     .when('/', {
         templateUrl: 'views/login.html'
     })
-    .when('/publicar', {
-        templateUrl: 'views/publicar.html'
+    .when('/login', {
+        templateUrl: 'views/login.html'
+    })
+    .when('/senha', {
+        templateUrl: 'views/esqueceuSenha.html'
     })
 });
