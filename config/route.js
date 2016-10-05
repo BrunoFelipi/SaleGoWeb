@@ -9,4 +9,7 @@ app.config(function($routeProvider){
     .when('/senha', {
         templateUrl: 'views/esqueceuSenha.html'
     })
+    .when('/home', {
+        templateUrl: 'views/home.html'
+    })
 });
