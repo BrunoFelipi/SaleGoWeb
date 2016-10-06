@@ -41,39 +41,55 @@
   <main>
 
     <div class="row">
-        <form class="col s8 m6 l8 offset-l2" style="padding-top: 30px">
-          <div class="row">
-            <div class="input-field col s6">
-              <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-              <label for="first_name">First Name</label>
+        <form name="f" class="col s8 m6 l8 offset-l2" style="padding-top: 30px">
+
+            <div class="card horizontal">
+
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h5 class="center teal-text">Cadastrar Ponto</h5>
+                        <br>
+                        <div class="divider"></div>
+                        <div class="row" style="padding-top: 20px">
+                          <div class="input-field col s6">
+                            <input placeholder="" id="latitude" type="number" class="validate">
+                            <label for="latitude">Latitude (X)</label>
+                          </div>
+                          <div class="input-field col s6">
+                            <input id="longitude" type="number" class="validate">
+                            <label for="longitude">Longitude (Y)</label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <textarea id="descricao" class="materialize-textarea"></textarea>
+                            <label for="descricao">Descrição</label>
+                          </div>
+                        </div>
+                        <div class="row">
+                            <p>Tipo de desconto: </p>
+                            <div class="input-field col s6">
+                                <input class="center" name="group1" type="radio" id="reais" checked=""/>
+                                <label for="reais">R$</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input class="center" name="group1" type="radio" id="porcentagem"/>
+                                <label for="porcentagem">%</label>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top: 20px">
+                          <div class="input-field col s12">
+                              <input placeholder="" id="valor" type="number" class="validate">
+                              <label for="valor">Valor</label>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <button type="submit" class="waves-effect waves-teal btn-flat teal-text center col l5 m5 s12">Cadastrar</button>
+                        <a href="" ng-click="limparCampos()" class="waves-effect waves-red btn-flat right red-text center col l5 m5 s12">Cancelar</a>
+                    </div>
+                </div>
             </div>
-            <div class="input-field col s6">
-              <input id="last_name" type="text" class="validate">
-              <label for="last_name">Last Name</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input disabled value="I am not editable" id="disabled" type="text" class="validate">
-              <label for="disabled">Disabled</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="password" type="password" class="validate">
-              <label for="password">Password</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="email" type="email" class="validate">
-              <label for="email">Email</label>
-            </div>
-          </div>
-          <div class="row">
-            <button type="submit" class="waves-effect waves-teal btn-flat teal-text">Enviar</button>
-            <a href="" class="waves-effect waves-red btn-flat right red-text">Cancelar</a>
-          </div>
 
         </form>
       </div>
