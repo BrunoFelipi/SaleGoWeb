@@ -1,0 +1,52 @@
+<script type="text/javascript">
+    $(".button-collapse").sideNav();
+</script>
+
+<div ng-controller="relatorioCtrl">
+
+  <header>
+    <ul id="slide-out" class="side-nav fixed lime lighten-5">
+        <li>
+            <div class="userView">
+                <img class="background" src="resources/teal.jpg">
+                <a href="#/conta"><img class="circle" src="resources/bk1.jpg"></a>
+                <a href="#/conta"><span class="white-text name">{{ nome }}</span></a>
+                <a href="#/conta"><span class="white-text email">{{ email }}</span></a>
+            </div>
+        </li>
+
+        <li>
+            <a href="#/cadastrarPonto" class="waves-effect" href=""><i class="material-icons">add</i>Cadastrar Ponto</a>
+        </li>
+
+        <li class="active">
+            <a href="" class="waves-effect" href=""><i class="material-icons">subject</i>Relatórios</a>
+        </li>
+
+        <li>
+            <a href="#/conta" class="waves-effect" href=""><i class="material-icons">settings</i>Conta</a>
+        </li>
+
+        <li>
+            <div class="divider"></div>
+        </li>
+
+        <li>
+            <a href="#/login" class="waves-effect" href=""><i class="material-icons red-text">power_settings_new</i>Sair</a>
+        </li>
+    </ul>
+  </header>
+
+
+  <main>
+
+    <h3>RELATÓRIO</h3>
+
+
+  </main>
+
+  <footer>
+
+  </footer>
+
+</div>

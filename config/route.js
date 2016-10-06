@@ -12,4 +12,13 @@ app.config(function($routeProvider){
     .when('/home', {
         templateUrl: 'views/home.html'
     })
+    .when('/cadastrarPonto', {
+        templateUrl: 'views/cadastrarPonto.html'
+    })
+    .when('/relatorio', {
+        templateUrl: 'views/relatorio.html'
+    })
+    .when('/conta', {
+        templateUrl: 'views/conta.html'
+    })
 });
