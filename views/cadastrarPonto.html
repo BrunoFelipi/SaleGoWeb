@@ -1,10 +1,46 @@
 <script type="text/javascript">
     $(".button-collapse").sideNav();
+			
+	function initMap() {
+	
+		var latit = document.getElementById("latitude").value;
+		var longi = document.getElementById("longitude").value;
+		
+		var map = new google.maps.Map(document.getElementById('map'), {
+			center: {lat: + latit, lng: + longi},
+			zoom: 6
+		});
+		
+		var infoWindow = new google.maps.InfoWindow({map: map});
+
+	  // Try HTML5 geolocation.
+	  if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function(position) {
+		  var pos = {
+			lat: position.coords.latitude,
+			lng: position.coords.longitude
+		  };
+
+		  infoWindow.setPosition(pos);
+		  infoWindow.setContent('Location found.');
+		  map.setCenter(pos);
+		}, function() {
+		  handleLocationError(true, infoWindow, map.getCenter());
+		});
+	  } else {
+		// Browser doesn't support Geolocation
+		handleLocationError(false, infoWindow, map.getCenter());
+	  }
+	}
+
+	function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+		infoWindow.setPosition(pos);
+		infoWindow.setContent(browserHasGeolocation ?
+							'Error: The Geolocation service failed.' :
+							'Error: Your browser doesn\'t support geolocation.');
+	}
+		
 </script>
-
-<script>
-
-  </script>
 
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDky8bTysiAre9Otf-oYT7vXiv5fT5apg0&callback=initMap">
@@ -15,6 +51,12 @@
     padding-left: 300px;
   }
 
+    @media only screen and (max-width : 992px) {
+      header, main, footer {
+        padding-left: 0;
+      }
+    }
+  
   #map {
     height: 400px;
     width: 100%;
@@ -25,7 +67,8 @@
 <div ng-controller="cadastrarPontoCtrl">
 
   <header>
-    <ul id="slide-out" class="side-nav fixed lime lighten-5">
+	<nav class="side-nav fixed grey lighten-4">
+    <ul >
         <li>
             <div class="userView">
                 <img class="background" src="resources/teal.jpg">
@@ -55,70 +98,84 @@
             <a href="#/login" class="waves-effect" href=""><i class="material-icons red-text">power_settings_new</i>Sair</a>
         </li>
     </ul>
+	</nav>
   </header>
 
 
   <main>
+  
+	<div class="container">
+		<div class="row">
+			<form name="f" class="col s12 m12 l12" style="padding-top: 30px">
 
-    <div class="row">
-        <form name="f" class="col s8 m6 l8 offset-l2" style="padding-top: 30px">
+				<div class="card horizontal">
 
-            <div class="card horizontal">
-
-                <div class="card-stacked">
-                    <div class="card-content">
-                        <h5 class="center teal-text">Cadastrar Ponto</h5>
-                        <br>
-                        <div class="divider"></div>
-                        <div class="row" style="padding-top: 20px">
-                          <div class="input-field col s6">
-                            <input placeholder="" id="latitude" ng-model="latitude" type="number" class="validate">
-                            <label for="latitude">Latitude (X)</label>
-                          </div>
-                          <div class="input-field col s6">
-                            <input id="longitude" type="number" ng-model="longitude" class="validate">
-                            <label for="longitude">Longitude (Y)</label>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="input-field col s12">
-                            <textarea id="descricao" class="materialize-textarea"></textarea>
-                            <label for="descricao">Descrição</label>
-                          </div>
-                        </div>
-                        <div class="row">
-                            <p>Tipo de desconto: </p>
-                            <div class="input-field col s6">
-                                <input class="center" name="group1" type="radio" id="reais" checked=""/>
-                                <label for="reais">R$</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input class="center" name="group1" type="radio" id="porcentagem"/>
-                                <label for="porcentagem">%</label>
-                            </div>
-                        </div>
-                        <div class="row" style="padding-top: 20px">
-                          <div class="input-field col s12">
-                              <input placeholder="" id="valor" type="number" class="validate">
-                              <label for="valor">Valor</label>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="card-action">
-                        <button type="submit" class="waves-effect waves-teal btn-flat teal-text center col l5 m5 s12">Cadastrar</button>
-                        <a href="" ng-click="limparCampos()" class="waves-effect waves-red btn-flat right red-text center col l5 m5 s12">Cancelar</a>
-                    </div>
-                </div>
-            </div>
-
-            <div id="map"></div>
-
-        </form>
-      </div>
+					<div class="card-stacked">
+						<div class="card-content">
+							<h5 class="center teal-text">Cadastrar Ponto</h5>
+							<br>
+							<div class="divider"></div>
+							<div class="row" style="padding-top: 20px">                          						  
+							  <div class="input-field col s6">
+								<input id="latitude" ng-model="latitude" onblur="initMap()" type="text" class="validate">                            
+								<label for="latitude"> Latitude (X)</label>
+							  </div>
+							  <div class="input-field col s6">
+								<input id="longitude" ng-model="longitude" onblur="initMap()" type="text" class="validate">                            
+								<label for="longitude"> Longitude (Y)</label>
+							  </div>
+							</div>
+							<div class="row">
+							  <div class="input-field col s12">
+								<textarea id="descricao" class="materialize-textarea"></textarea>
+								<label for="descricao">Descrição</label>
+							  </div>
+							</div>
+							<div class="row">
+								Tipo de desconto:
+								<div class="input-field col s6">
+									<input class="center" name="group1" type="radio" id="reais" checked=""/>
+									<label for="reais">R$</label>
+								</div>
+								<div class="input-field col s6">
+									<input class="center" name="group1" type="radio" id="porcentagem"/>
+									<label for="porcentagem">%</label>
+								</div>
+							</div>
+							<div class="row" style="padding-top: 20px">
+							  <div class="input-field col s12">
+								  <input placeholder="" id="valor" type="number" class="validate">
+								  <label for="valor">Valor</label>
+							  </div>
+							</div>
+						</div>
+						
+						<div id="map"></div>
+						
+						<div class="card-action">
+							<button type="submit" class="waves-effect waves-teal btn-flat teal-text center">Cadastrar</button>
+							<a href="" ng-click="limparCampos()" class="waves-effect waves-red btn-flat right red-text center">Cancelar</a>
+						</div>
+						
+					</div>
+				</div>
+			</form>
+		  </div>
+	  </div>
   </main>
 
   <footer>
 
-  </footer>
-
+  </footer>  
 </div>
+
+
+  <script>
+  $(document).ready(function(){
+	$( "#latitude" ).focus();		
+	$( "#longitude" ).focus();
+	//$( "#latitude" ).select();
+	//$( "#longitude" ).select();
+  });
+  
+  </script>
