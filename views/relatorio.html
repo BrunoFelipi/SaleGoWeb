@@ -2,6 +2,12 @@
 $(".button-collapse").sideNav();
 </script>
 
+<style media="screen">
+  header, main, footer {
+    padding-left: 300px;
+  }
+</style>
+
 <div ng-controller="relatorioCtrl">
 
     <header>
@@ -42,7 +48,7 @@ $(".button-collapse").sideNav();
         <form name="formulario">
             <div class="container" style="padding-top: 50px">
                 <div class="row">
-                    <table>
+                    <table class="responsive-table striped">
                         <thead>
                             <tr>
                                 <th data-field="id">Name</th>
@@ -68,7 +74,7 @@ $(".button-collapse").sideNav();
                                 <td>$7.00</td>
                             </tr>
                         </tbody>
-                    </table>                    
+                    </table>
                 </div>
             </div>
         </form>

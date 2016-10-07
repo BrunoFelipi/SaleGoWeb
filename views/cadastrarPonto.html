@@ -2,6 +2,26 @@
     $(".button-collapse").sideNav();
 </script>
 
+<script>
+
+  </script>
+
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDky8bTysiAre9Otf-oYT7vXiv5fT5apg0&callback=initMap">
+  </script>
+
+<style media="screen">
+  header, main, footer {
+    padding-left: 300px;
+  }
+
+  #map {
+    height: 400px;
+    width: 100%;
+  }
+
+</style>
+
 <div ng-controller="cadastrarPontoCtrl">
 
   <header>
@@ -52,11 +72,11 @@
                         <div class="divider"></div>
                         <div class="row" style="padding-top: 20px">
                           <div class="input-field col s6">
-                            <input placeholder="" id="latitude" type="number" class="validate">
+                            <input placeholder="" id="latitude" ng-model="latitude" type="number" class="validate">
                             <label for="latitude">Latitude (X)</label>
                           </div>
                           <div class="input-field col s6">
-                            <input id="longitude" type="number" class="validate">
+                            <input id="longitude" type="number" ng-model="longitude" class="validate">
                             <label for="longitude">Longitude (Y)</label>
                           </div>
                         </div>
@@ -91,10 +111,10 @@
                 </div>
             </div>
 
+            <div id="map"></div>
+
         </form>
       </div>
-
-
   </main>
 
   <footer>

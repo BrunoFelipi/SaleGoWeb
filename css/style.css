@@ -5,16 +5,6 @@
     transform: translate(-50%, 0%);
 }
 
-header, main, footer {
-  padding-left: 300px;
-}
-
-@media only screen and (max-width : 992px) {
-  header, main, footer {
-    padding-left: 0;
-  }
-}
-
 .no-select {
     -webkit-touch-callout: none;
    -webkit-user-select: none;
