@@ -1,16 +1,16 @@
 <script type="text/javascript">
     $(".button-collapse").sideNav();
-			
+
 	function initMap() {
-	
+
 		var latit = document.getElementById("latitude").value;
 		var longi = document.getElementById("longitude").value;
-		
+
 		var map = new google.maps.Map(document.getElementById('map'), {
 			center: {lat: + latit, lng: + longi},
 			zoom: 6
 		});
-		
+
 		var infoWindow = new google.maps.InfoWindow({map: map});
 
 	  // Try HTML5 geolocation.
@@ -39,7 +39,7 @@
 							'Error: The Geolocation service failed.' :
 							'Error: Your browser doesn\'t support geolocation.');
 	}
-		
+
 </script>
 
   <script async defer
@@ -56,7 +56,7 @@
         padding-left: 0;
       }
     }
-  
+
   #map {
     height: 400px;
     width: 100%;
@@ -101,11 +101,10 @@
 	</nav>
   </header>
 
-
   <main>
-  
+
 	<div class="container">
-		<div class="row">
+
 			<form name="f" class="col s12 m12 l12" style="padding-top: 30px">
 
 				<div class="card horizontal">
@@ -115,24 +114,24 @@
 							<h5 class="center teal-text">Cadastrar Ponto</h5>
 							<br>
 							<div class="divider"></div>
-							<div class="row" style="padding-top: 20px">                          						  
+							<div class="row" style="padding-top: 20px">
 							  <div class="input-field col s6">
-								<input id="latitude" ng-model="latitude" onblur="initMap()" type="text" class="validate">                            
-								<label for="latitude"> Latitude (X)</label>
+								  <input id="latitude" ng-model="latitude" onblur="initMap()" type="text" class="validate">
+								  <label for="latitude"> Latitude (X)</label>
 							  </div>
 							  <div class="input-field col s6">
-								<input id="longitude" ng-model="longitude" onblur="initMap()" type="text" class="validate">                            
-								<label for="longitude"> Longitude (Y)</label>
+								  <input id="longitude" ng-model="longitude" onblur="initMap()" type="text" class="validate">
+								  <label for="longitude"> Longitude (Y)</label>
 							  </div>
 							</div>
 							<div class="row">
 							  <div class="input-field col s12">
-								<textarea id="descricao" class="materialize-textarea"></textarea>
+								  <textarea id="descricao" class="materialize-textarea"></textarea>
 								<label for="descricao">Descrição</label>
 							  </div>
 							</div>
 							<div class="row">
-								Tipo de desconto:
+								<h5>Tipo de desconto:</h5>
 								<div class="input-field col s6">
 									<input class="center" name="group1" type="radio" id="reais" checked=""/>
 									<label for="reais">R$</label>
@@ -149,33 +148,33 @@
 							  </div>
 							</div>
 						</div>
-						
+
 						<div id="map"></div>
-						
+
 						<div class="card-action">
 							<button type="submit" class="waves-effect waves-teal btn-flat teal-text center">Cadastrar</button>
 							<a href="" ng-click="limparCampos()" class="waves-effect waves-red btn-flat right red-text center">Cancelar</a>
 						</div>
-						
+
 					</div>
 				</div>
 			</form>
-		  </div>
+
 	  </div>
   </main>
 
   <footer>
 
-  </footer>  
+  </footer>
 </div>
 
 
   <script>
   $(document).ready(function(){
-	$( "#latitude" ).focus();		
+	$( "#latitude" ).focus();
 	$( "#longitude" ).focus();
 	//$( "#latitude" ).select();
 	//$( "#longitude" ).select();
   });
-  
+
   </script>
