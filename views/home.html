@@ -1,59 +1,144 @@
 <script type="text/javascript">
-    $('.button-collapse').sideNav();
-    $('.collapsible').collapsible();
+$('.button-collapse').sideNav();
+$('.collapsible').collapsible();
+
+function initMap() {
+
+    var myLatLng = {lat: -26.9166207, lng: -49.0717429};
+
+    // Create a map object and specify the DOM element for display.
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: myLatLng,
+        scrollwheel: false,
+        zoom: 18
+    });
+
+    // Create a marker and set its position.
+    var marker = new google.maps.Marker({
+        map: map,
+        position: myLatLng,
+        title: 'Hello World!'
+    });
+}
+
 </script>
 
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDky8bTysiAre9Otf-oYT7vXiv5fT5apg0&callback=initMap">
+</script>
+
+
 <style media="screen">
-  header, main, footer {
+header, main, footer {
     padding-left: 300px;
-  }
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+}
 </style>
 
 <div ng-controller="homeCtrl">
 
-  <header>
-    <ul id="slide-out" class="side-nav fixed lime lighten-5">
-        <li>
-            <div class="userView">
-                <img class="background" src="resources/teal.jpg">
-                <a href=""><img class="circle" src="resources/bk1.jpg"></a>
-                <a href=""><span class="white-text name">{{ nome }}</span></a>
-                <a href=""><span class="white-text email">{{ email }}</span></a>
+    <header>
+        <nav class="side-nav fixed grey lighten-4">
+            <ul>
+                <li>
+                    <div class="userView">
+                        <img class="background" src="resources/teal.jpg">
+                        <a href=""><img class="circle" src="resources/bk1.jpg"></a>
+                        <a href=""><span class="white-text name">{{ nome }}</span></a>
+                        <a href=""><span class="white-text email">{{ email }}</span></a>
+                    </div>
+                </li>
+
+                <li class="active">
+                    <a href="#/home" class="waves-effect" href=""><i class="material-icons">home</i>Home</a>
+                </li>
+
+                <li>
+                    <a href="#/cadastrarPonto" class="waves-effect" href=""><i class="material-icons">add</i>Cadastrar Ponto</a>
+                </li>
+
+                <li>
+                    <a href="#/relatorio" class="waves-effect" href=""><i class="material-icons">subject</i>Relatórios</a>
+                </li>
+
+                <li>
+                    <a href="#/conta" class="waves-effect"><i class="material-icons">settings</i>Conta</a>
+                </li>
+
+                <li>
+                    <div class="divider"></div>
+                </li>
+
+                <li>
+                    <a class="waves-effect" href=""><i class="material-icons red-text">power_settings_new</i>Sair</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="map"></div>
+        <br>
+        <div class="container">
+            <div class="row">
+                <table class="responsive-table striped">
+                    <thead>
+                        <tr>
+                            <th data-field="descricao">Descrição</th>
+                            <th data-field="latitude">Latitude(X)</th>
+                            <th data-field="longitude">Longitude(Y)</th>
+                            <th data-field="tipoDesconto">Tipo Desconto</th>
+                            <th data-field="valor">Valor</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Desc Teste</td>
+                            <td>123456</td>
+                            <td>-12345</td>
+                            <td>R$</td>
+                            <td>5.00</td>
+                        </tr>
+                        <tr>
+                            <td>Descrição</td>
+                            <td>123</td>
+                            <td>-123</td>
+                            <td>%</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td>Desc Teste</td>
+                            <td>123456</td>
+                            <td>-12345</td>
+                            <td>R$</td>
+                            <td>5.00</td>
+                        </tr>
+                        <tr>
+                            <td>Desc Teste</td>
+                            <td>123456</td>
+                            <td>-12345</td>
+                            <td>R$</td>
+                            <td>5.00</td>
+                        </tr>
+                        <tr>
+                            <td>Desc Teste</td>
+                            <td>123456</td>
+                            <td>-12345</td>
+                            <td>R$</td>
+                            <td>5.00</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </li>
+        </div>
+    </main>
 
-        <li class="active">
-            <a href="#/cadastrarPonto" class="waves-effect" href=""><i class="material-icons">add</i>Cadastrar Ponto</a>
-        </li>
+    <footer>
 
-        <li>
-            <a href="#/relatorio" class="waves-effect" href=""><i class="material-icons">subject</i>Relatórios</a>
-        </li>
-
-        <li>
-            <a class="waves-effect" href=""><i class="material-icons">settings</i>Conta</a>
-        </li>
-
-        <li>
-            <div class="divider"></div>
-        </li>
-
-        <li>
-            <a class="waves-effect" href=""><i class="material-icons red-text">power_settings_new</i>Sair</a>
-        </li>
-    </ul>
-  </header>
-
-
-  <main class="teal darken-4">
-
-
-
-
-  </main>
-
-  <footer>
-
-  </footer>
-
+    </footer>
 </div>

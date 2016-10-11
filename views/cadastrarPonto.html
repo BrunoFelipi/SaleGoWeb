@@ -1,173 +1,163 @@
 <script type="text/javascript">
-    $(".button-collapse").sideNav();
+$(".button-collapse").sideNav();
 
+function initMap() {
 
-	function initMap() {
+    var latit = document.getElementById("latitude").value;
+    var longi = document.getElementById("longitude").value;
 
-        var latit = document.getElementById("latitude").value;
-        var longi = document.getElementById("longitude").value;
+    var myLatLng = {lat: + latit, lng: + longi};
 
-        var map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: + latit, lng: + longi},
-            zoom: 18
-        });
+    // Create a map object and specify the DOM element for display.
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: myLatLng,
+        scrollwheel: false,
+        zoom: 18
+    });
 
-        var infoWindow = new google.maps.InfoWindow({map: map});
+    // Create a marker and set its position.
+    var marker = new google.maps.Marker({
+        map: map,
+        position: myLatLng,
+        title: 'Hello World!'
+    });
+}
 
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                var pos = {
-                    lat: latit,
-                    lng: longi
-                };
-
-                infoWindow.setPosition(pos);
-                infoWindow.setContent('Location found.');
-                map.setCenter(pos);
-            }, function() {
-                handleLocationError(true, infoWindow, map.getCenter());
-            });
-        } else {
-            // Browser doesn't support Geolocation
-            handleLocationError(false, infoWindow, map.getCenter());
-        }
-    }
 </script>
 
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDky8bTysiAre9Otf-oYT7vXiv5fT5apg0&callback=initMap">
-  </script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDky8bTysiAre9Otf-oYT7vXiv5fT5apg0&callback=initMap">
+</script>
 
 <style media="screen">
-  header, main, footer {
+header, main, footer {
     padding-left: 300px;
-  }
+}
 
-    @media only screen and (max-width : 992px) {
-      header, main, footer {
+@media only screen and (max-width : 992px) {
+    header, main, footer {
         padding-left: 0;
-      }
     }
+}
 
-  #map {
+#map {
     height: 400px;
     width: 100%;
-  }
+}
 
 </style>
 
 <div ng-controller="cadastrarPontoCtrl">
 
-  <header>
-	<nav class="side-nav fixed grey lighten-4">
-    <ul >
-        <li>
-            <div class="userView">
-                <img class="background" src="resources/teal.jpg">
-                <a href="#/conta"><img class="circle" src="resources/bk1.jpg"></a>
-                <a href="#/conta"><span class="white-text name">{{ nome }}</span></a>
-                <a href="#/conta"><span class="white-text email">{{ email }}</span></a>
-            </div>
-        </li>
+    <header>
+        <nav class="side-nav fixed grey lighten-4">
+            <ul>
+                <li>
+                    <div class="userView">
+                        <img class="background" src="resources/teal.jpg">
+                        <a href="#/conta"><img class="circle" src="resources/bk1.jpg"></a>
+                        <a href="#/conta"><span class="white-text name">{{ nome }}</span></a>
+                        <a href="#/conta"><span class="white-text email">{{ email }}</span></a>
+                    </div>
+                </li>
 
-        <li class="active">
-            <a href="" class="waves-effect" href=""><i class="material-icons">add</i>Cadastrar Ponto</a>
-        </li>
+                <li>
+                    <a href="#/home" class="waves-effect" href=""><i class="material-icons">home</i>Home</a>
+                </li>
 
-        <li>
-            <a href="#/relatorio" class="waves-effect" href=""><i class="material-icons">subject</i>Relatórios</a>
-        </li>
+                <li class="active">
+                    <a href="" class="waves-effect" href=""><i class="material-icons">add</i>Cadastrar Ponto</a>
+                </li>
 
-        <li>
-            <a href="#/conta" class="waves-effect" href=""><i class="material-icons">settings</i>Conta</a>
-        </li>
+                <li>
+                    <a href="#/relatorio" class="waves-effect" href=""><i class="material-icons">subject</i>Relatórios</a>
+                </li>
 
-        <li>
-            <div class="divider"></div>
-        </li>
+                <li>
+                    <a href="#/conta" class="waves-effect" href=""><i class="material-icons">settings</i>Conta</a>
+                </li>
 
-        <li>
-            <a href="#/login" class="waves-effect" href=""><i class="material-icons red-text">power_settings_new</i>Sair</a>
-        </li>
-    </ul>
-	</nav>
-  </header>
+                <li>
+                    <div class="divider"></div>
+                </li>
 
-  <main>
+                <li>
+                    <a href="#/login" class="waves-effect" href=""><i class="material-icons red-text">power_settings_new</i>Sair</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-	<div class="container">
+    <main>
+        <div class="container">
+            <form name="f" style="padding-top: 30px">
+                <div class="card horizontal">
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <h4 class="center teal-text">Cadastrar Ponto</h4>
+                            <br>
+                            <div class="divider"></div>
+                            <div class="row" style="padding-top: 20px">
+                                <div class="input-field col s6">
+                                    <input id="latitude" ng-model="latitude" onblur="initMap()" type="text" class="validate">
+                                    <label for="latitude"> Latitude (X)</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="longitude" ng-model="longitude" onblur="initMap()" type="text" class="validate">
+                                    <label for="longitude"> Longitude (Y)</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea id="descricao" class="materialize-textarea"></textarea>
+                                    <label for="descricao">Descrição</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <h5 class="light center teal-text">Tipo de desconto:</h5>
+                                <div class="input-field col s6">
+                                    <input class="center teal" name="group1" type="radio" id="reais" checked=""/>
+                                    <label for="reais">R$</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input class="center" name="group1" type="radio" id="porcentagem"/>
+                                    <label for="porcentagem">%</label>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top: 20px">
+                                <div class="input-field col s12">
+                                    <input placeholder="" id="valor" type="number" class="validate">
+                                    <label for="valor">Valor</label>
+                                </div>
+                            </div>
+                        </div>
 
-			<form name="f" class="col s12 m12 l12" style="padding-top: 30px">
+                        <div id="map"></div>
 
-				<div class="card horizontal">
+                        <div class="card-action">
+                            <button type="submit" class="waves-effect waves-teal btn-flat teal-text center">Cadastrar</button>
+                            <a href="" ng-click="limparCampos()" class="waves-effect waves-red btn-flat right red-text center">Cancelar</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
 
-					<div class="card-stacked">
-						<div class="card-content">
-							<h5 class="center teal-text">Cadastrar Ponto</h5>
-							<br>
-							<div class="divider"></div>
-							<div class="row" style="padding-top: 20px">
-							  <div class="input-field col s6">
-								  <input id="latitude" ng-model="latitude" onblur="initMap()" type="text" class="validate">
-								  <label for="latitude"> Latitude (X)</label>
-							  </div>
-							  <div class="input-field col s6">
-								  <input id="longitude" ng-model="longitude" onblur="initMap()" type="text" class="validate">
-								  <label for="longitude"> Longitude (Y)</label>
-							  </div>
-							</div>
-							<div class="row">
-							  <div class="input-field col s12">
-								  <textarea id="descricao" class="materialize-textarea"></textarea>
-								<label for="descricao">Descrição</label>
-							  </div>
-							</div>
-							<div class="row">
-								<h5>Tipo de desconto:</h5>
-								<div class="input-field col s6">
-									<input class="center" name="group1" type="radio" id="reais" checked=""/>
-									<label for="reais">R$</label>
-								</div>
-								<div class="input-field col s6">
-									<input class="center" name="group1" type="radio" id="porcentagem"/>
-									<label for="porcentagem">%</label>
-								</div>
-							</div>
-							<div class="row" style="padding-top: 20px">
-							  <div class="input-field col s12">
-								  <input placeholder="" id="valor" type="number" class="validate">
-								  <label for="valor">Valor</label>
-							  </div>
-							</div>
-						</div>
+    <footer>
 
-						<div id="map"></div>
-
-						<div class="card-action">
-							<button type="submit" class="waves-effect waves-teal btn-flat teal-text center">Cadastrar</button>
-							<a href="" ng-click="limparCampos()" class="waves-effect waves-red btn-flat right red-text center">Cancelar</a>
-						</div>
-
-					</div>
-				</div>
-			</form>
-
-	  </div>
-  </main>
-
-  <footer>
-
-  </footer>
+    </footer>
 </div>
 
 
-  <script>
-  $(document).ready(function(){
-	$( "#latitude" ).focus();
-	$( "#longitude" ).focus();
-	//$( "#latitude" ).select();
-	//$( "#longitude" ).select();
-  });
+<script>
+$(document).ready(function(){
+    $( "#latitude" ).focus();
+    $( "#longitude" ).focus();
+    //$( "#latitude" ).select();
+    //$( "#longitude" ).select();
+});
 
-  </script>
+</script>

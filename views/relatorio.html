@@ -11,38 +11,43 @@ $(".button-collapse").sideNav();
 <div ng-controller="relatorioCtrl">
 
     <header>
-        <ul id="slide-out" class="side-nav fixed lime lighten-5">
-            <li>
-                <div class="userView">
-                    <img class="background" src="resources/teal.jpg">
-                    <a href="#/conta"><img class="circle" src="resources/bk1.jpg"></a>
-                    <a href="#/conta"><span class="white-text name">{{ nome }}</span></a>
-                    <a href="#/conta"><span class="white-text email">{{ email }}</span></a>
-                </div>
-            </li>
+        <nav class="side-nav fixed grey lighten-4">
+            <ul>
+                <li>
+                    <div class="userView">
+                        <img class="background" src="resources/teal.jpg">
+                        <a href="#/conta"><img class="circle" src="resources/bk1.jpg"></a>
+                        <a href="#/conta"><span class="white-text name">{{ nome }}</span></a>
+                        <a href="#/conta"><span class="white-text email">{{ email }}</span></a>
+                    </div>
+                </li>
 
-            <li>
-                <a href="#/cadastrarPonto" class="waves-effect" href=""><i class="material-icons">add</i>Cadastrar Ponto</a>
-            </li>
+                <li>
+                    <a href="#/home" class="waves-effect" href=""><i class="material-icons">home</i>Home</a>
+                </li>
 
-            <li class="active">
-                <a href="" class="waves-effect" href=""><i class="material-icons">subject</i>Relatórios</a>
-            </li>
+                <li>
+                    <a href="#/cadastrarPonto" class="waves-effect" href=""><i class="material-icons">add</i>Cadastrar Ponto</a>
+                </li>
 
-            <li>
-                <a href="#/conta" class="waves-effect" href=""><i class="material-icons">settings</i>Conta</a>
-            </li>
+                <li class="active">
+                    <a href="" class="waves-effect" href=""><i class="material-icons">subject</i>Relatórios</a>
+                </li>
 
-            <li>
-                <div class="divider"></div>
-            </li>
+                <li>
+                    <a href="#/conta" class="waves-effect" href=""><i class="material-icons">settings</i>Conta</a>
+                </li>
 
-            <li>
-                <a href="#/login" class="waves-effect" href=""><i class="material-icons red-text">power_settings_new</i>Sair</a>
-            </li>
-        </ul>
+                <li>
+                    <div class="divider"></div>
+                </li>
+
+                <li>
+                    <a href="#/login" class="waves-effect" href=""><i class="material-icons red-text">power_settings_new</i>Sair</a>
+                </li>
+            </ul>
+        </nav>
     </header>
-
 
     <main>
         <form name="formulario">
