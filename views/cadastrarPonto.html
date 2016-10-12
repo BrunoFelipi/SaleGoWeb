@@ -56,8 +56,8 @@ header, main, footer {
                     <div class="userView">
                         <img class="background" src="resources/teal.jpg">
                         <a href="#/conta"><img class="circle" src="resources/bk1.jpg"></a>
-                        <a href="#/conta"><span class="white-text name">{{ nome }}</span></a>
-                        <a href="#/conta"><span class="white-text email">{{ email }}</span></a>
+                        <a href="#/conta"><span class="white-text name">{{usuario.nome}}</span></a>
+                        <a href="#/conta"><span class="white-text email">{{usuario.email}}</span></a>
                     </div>
                 </li>
 
@@ -90,7 +90,7 @@ header, main, footer {
 
     <main>
         <div class="container">
-            <form name="f" style="padding-top: 30px">
+            <form style="padding-top: 30px">
                 <div class="card horizontal">
                     <div class="card-stacked">
                         <div class="card-content">
@@ -156,8 +156,6 @@ header, main, footer {
 $(document).ready(function(){
     $( "#latitude" ).focus();
     $( "#longitude" ).focus();
-    //$( "#latitude" ).select();
-    //$( "#longitude" ).select();
 });
 
 </script>

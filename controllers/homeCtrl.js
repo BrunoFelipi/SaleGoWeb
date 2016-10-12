@@ -1,6 +1,8 @@
 app.controller('homeCtrl', function($scope, $location){
 
-    $scope.nome = "Email Teste";
-    $scope.email = "email@email.com.br";
+  $scope.usuario = {
+    nome : "Email Teste",
+    email : "email@email.com.br"
+  };
 
 });

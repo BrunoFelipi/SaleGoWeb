@@ -3,7 +3,7 @@ app.controller('loginCtrl', function($scope, $location){
     //Logar
     $scope.logar = function(usuario){
 
-        $location.path('cadastrarPonto');
+        $location.path('home');
     };
 
 });
