@@ -30,7 +30,7 @@ app.factory('UsuarioService', function($http, $rootScope, $location){
               params: {email: email, senha: senha}
           });
         },
-        cadastrar: function(nome, email, senha){
+        cadastrarUsuario: function(nome, email, senha){
             return $http({
                 method: 'post',
                 url: 'ws/usuario/insert.php',
