@@ -2,7 +2,7 @@ app.controller('esqueceuSenhaCtrl', function($scope, UsuarioService, toastr, $lo
 
     $scope.enviarEmail = function(){
 
-        var promise = UsuarioService.solicitarRegistro($scope.email);
+        var promise = UsuarioService.enviarEmailEsqueceuSenha($scope.email);
 
         promise.then(function(response){
             if(response.data == 'true'){

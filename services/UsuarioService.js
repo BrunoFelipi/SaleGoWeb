@@ -7,8 +7,14 @@ app.factory('UsuarioService', function($http, $rootScope, $location){
                 url: 'ws/usuario/validarSenha.php',
                 params: {email: email, senha: senha}
             });
-        }
-
+        },
+        cadastrarUsuario: function(nome, email, senha){
+            return $http({
+                method: 'post',
+                url: 'ws/usuario/insert.php',
+                data: {nome: nome, email: email, senha: senha}
+            });
+        },
         select: function(email){
             return $http({
                 method: 'get',
@@ -30,13 +36,6 @@ app.factory('UsuarioService', function($http, $rootScope, $location){
               params: {email: email, senha: senha}
           });
         },
-        cadastrarUsuario: function(nome, email, senha){
-            return $http({
-                method: 'post',
-                url: 'ws/usuario/insert.php',
-                data: {nome: nome, email: email, senha: senha}
-            });
-        },
         existEmail: function(email){
             return $http({
                 method: 'get',
@@ -44,7 +43,14 @@ app.factory('UsuarioService', function($http, $rootScope, $location){
                 params: {email: email}
             });
         },
-        enviarEmailEsqueceuSenha: function(email, token){
+        alterarSenha: function(email, senha){
+            return $http({
+                method: 'post',
+                url: 'ws/usuario/alterarSenha.php',
+                data: {email: email, senha: senha}
+            });
+        },
+		enviarEmailEsqueceuSenha: function(email, token){
             return $http({
                 method: 'get',
                 url: 'ws/usuario/enviarEmailEsqueceuSenha.php',
@@ -58,25 +64,5 @@ app.factory('UsuarioService', function($http, $rootScope, $location){
                 params: {email: email}
             });
         },
-        alterarSenha: function(email, senha){
-            return $http({
-                method: 'post',
-                url: 'ws/usuario/alterarSenha.php',
-                data: {email: email, senha: senha}
-            });
-        },
-		validar: function(){
-            if($rootScope.usuario.id == -1)
-            {
-                $location.path('login');
-            }
-        },
-        encerrar: function(){
-            $rootScope.usuario.id == -1;
-            $location.path('login');
-        },
-        getUsuario: function(){
-            return $rootScope.usuario;
-        }
     }
 });
