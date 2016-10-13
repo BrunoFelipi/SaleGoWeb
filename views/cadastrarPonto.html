@@ -1,6 +1,20 @@
 <script type="text/javascript">
 $(".button-collapse").sideNav();
 
+ var slider = document.getElementById('raioAlcance');
+  noUiSlider.create(slider, {
+   start: [20, 80],
+   connect: true,
+   step: 1,
+   range: {
+     'min': 0,
+     'max': 100
+   },
+   format: wNumb({
+     decimals: 0
+   })
+  });
+
 function initMap() {
 
   var latit = document.getElementById("latitude").value;
@@ -112,10 +126,12 @@ header, main, footer {
                   <textarea id="descricao" class="materialize-textarea"></textarea>
                   <label for="descricao">Descrição</label>
                 </div>
+
                 <div class="input-field col s12">
-                  <input id="raioAlcance" ng-model="raioAlcance" type="number" class="validate">
-                  <label for="radioAlcance"> Raio de Alcance (Km)</label>
+                  <input id="raioAlcance" ng-model="raioAlcance" type="number" class="validate" min="0" max="30">
+                  <label for="descricao">Raio de Alcance (Km)</label>
                 </div>
+
               </div>
 
               <div class="row" style="padding-top: 20px">

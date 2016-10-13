@@ -1,3 +1,3 @@
 <?php
-    $conexao = mysqli_connect('localhost','root','','tecnews');
+    $conexao = mysqli_connect('localhost','root','','salego');
 ?>
