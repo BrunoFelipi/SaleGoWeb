@@ -3,24 +3,24 @@ $(".button-collapse").sideNav();
 
 function initMap() {
 
-    var latit = document.getElementById("latitude").value;
-    var longi = document.getElementById("longitude").value;
+  var latit = document.getElementById("latitude").value;
+  var longi = document.getElementById("longitude").value;
 
-    var myLatLng = {lat: + latit, lng: + longi};
+  var myLatLng = {lat: + latit, lng: + longi};
 
-    // Create a map object and specify the DOM element for display.
-    var map = new google.maps.Map(document.getElementById('map'), {
-        center: myLatLng,
-        scrollwheel: false,
-        zoom: 18
-    });
+  // Create a map object and specify the DOM element for display.
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: myLatLng,
+    scrollwheel: false,
+    zoom: 18
+  });
 
-    // Create a marker and set its position.
-    var marker = new google.maps.Marker({
-        map: map,
-        position: myLatLng,
-        title: 'Hello World!'
-    });
+  // Create a marker and set its position.
+  var marker = new google.maps.Marker({
+    map: map,
+    position: myLatLng,
+    title: 'Hello World!'
+  });
 }
 
 </script>
@@ -31,131 +31,138 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDky8bTysiAre9Otf-oYT7vXiv
 
 <style media="screen">
 header, main, footer {
-    padding-left: 300px;
+  padding-left: 300px;
 }
 
 @media only screen and (max-width : 992px) {
-    header, main, footer {
-        padding-left: 0;
-    }
+  header, main, footer {
+    padding-left: 0;
+  }
 }
 
 #map {
-    height: 400px;
-    width: 100%;
+  height: 400px;
+  width: 100%;
 }
 
 </style>
 
 <div ng-controller="cadastrarPontoCtrl">
 
-    <header>
-        <nav class="side-nav fixed grey lighten-4">
-            <ul>
-                <li>
-                    <div class="userView">
-                        <img class="background" src="resources/teal.jpg">
-                        <a href="#/conta"><img class="circle" src="resources/bk1.jpg"></a>
-                        <a href="#/conta"><span class="white-text name">{{usuario.nome}}</span></a>
-                        <a href="#/conta"><span class="white-text email">{{usuario.email}}</span></a>
-                    </div>
-                </li>
+  <header>
+    <nav class="side-nav fixed grey lighten-4">
+      <ul>
+        <li>
+          <div class="userView">
+            <img class="background" src="resources/teal.jpg">
+            <a href="#/conta"><img class="circle" src="resources/bk1.jpg"></a>
+            <a href="#/conta"><span class="white-text name">{{usuario.nome}}</span></a>
+            <a href="#/conta"><span class="white-text email">{{usuario.email}}</span></a>
+          </div>
+        </li>
 
-                <li>
-                    <a href="#/home" class="waves-effect" href=""><i class="material-icons">home</i>Home</a>
-                </li>
+        <li>
+          <a href="#/home" class="waves-effect" href=""><i class="material-icons">home</i>Home</a>
+        </li>
 
-                <li class="active">
-                    <a href="" class="waves-effect" href=""><i class="material-icons">add</i>Cadastrar Ponto</a>
-                </li>
+        <li class="active">
+          <a href="" class="waves-effect" href=""><i class="material-icons">add</i>Cadastrar Ponto</a>
+        </li>
 
-                <li>
-                    <a href="#/relatorio" class="waves-effect" href=""><i class="material-icons">subject</i>Relatórios</a>
-                </li>
+        <li>
+          <a href="#/relatorio" class="waves-effect" href=""><i class="material-icons">subject</i>Relatórios</a>
+        </li>
 
-                <li>
-                    <a href="#/conta" class="waves-effect" href=""><i class="material-icons">settings</i>Conta</a>
-                </li>
+        <li>
+          <a href="#/conta" class="waves-effect" href=""><i class="material-icons">settings</i>Conta</a>
+        </li>
 
-                <li>
-                    <div class="divider"></div>
-                </li>
+        <li>
+          <div class="divider"></div>
+        </li>
 
-                <li>
-                    <a href="#/login" class="waves-effect" href=""><i class="material-icons red-text">power_settings_new</i>Sair</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+        <li>
+          <a href="#/login" class="waves-effect" href=""><i class="material-icons red-text">power_settings_new</i>Sair</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-    <main>
-        <div class="container">
-            <form style="padding-top: 30px">
-                <div class="card horizontal">
-                    <div class="card-stacked">
-                        <div class="card-content">
-                            <h4 class="center teal-text">Cadastrar Ponto</h4>
-                            <br>
-                            <div class="divider"></div>
-                            <div class="row" style="padding-top: 20px">
-                                <div class="input-field col s6">
-                                    <input id="latitude" ng-model="latitude" onblur="initMap()" type="text" class="validate">
-                                    <label for="latitude"> Latitude (X)</label>
-                                </div>
-                                <div class="input-field col s6">
-                                    <input id="longitude" ng-model="longitude" onblur="initMap()" type="text" class="validate">
-                                    <label for="longitude"> Longitude (Y)</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <textarea id="descricao" class="materialize-textarea"></textarea>
-                                    <label for="descricao">Descrição</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <h5 class="light center teal-text">Tipo de desconto:</h5>
-                                <div class="input-field col s6">
-                                    <input class="center teal" name="group1" type="radio" id="reais" checked=""/>
-                                    <label for="reais">R$</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <input class="center" name="group1" type="radio" id="porcentagem"/>
-                                    <label for="porcentagem">%</label>
-                                </div>
-                            </div>
-                            <div class="row" style="padding-top: 20px">
-                                <div class="input-field col s12">
-                                    <input placeholder="" id="valor" type="number" class="validate">
-                                    <label for="valor">Valor</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="map"></div>
-
-                        <div class="card-action">
-                            <button type="submit" class="waves-effect waves-teal btn-flat teal-text center">Cadastrar</button>
-                            <a href="" ng-click="limparCampos()" class="waves-effect waves-red btn-flat right red-text center">Cancelar</a>
-                        </div>
-                    </div>
+  <main>
+    <div class="container">
+      <form style="padding-top: 30px">
+        <div class="card horizontal">
+          <div class="card-stacked">
+            <div class="card-content">
+              <h4 class="center teal-text">Cadastrar Ponto</h4>
+              <br>
+              <div class="divider"></div>
+              <div class="row" style="padding-top: 20px">
+                <div class="input-field col s6">
+                  <input id="latitude" ng-model="latitude" onblur="initMap()" type="text" class="validate">
+                  <label for="latitude"> Latitude (X)</label>
                 </div>
-            </form>
+                <div class="input-field col s6">
+                  <input id="longitude" ng-model="longitude" onblur="initMap()" type="text" class="validate">
+                  <label for="longitude"> Longitude (Y)</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="descricao" class="materialize-textarea"></textarea>
+                  <label for="descricao">Descrição</label>
+                </div>
+                <div class="input-field col s12">
+                  <input id="raioAlcance" ng-model="raioAlcance" type="number" class="validate">
+                  <label for="radioAlcance"> Raio de Alcance (Km)</label>
+                </div>
+              </div>
+
+              <div class="row" style="padding-top: 20px">
+                <div class="input-field col s12">
+                  <input placeholder="" id="valor" type="number" class="validate">
+                  <label for="valor">Valor</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <h5 class="light center teal-text">Tipo de desconto:</h5>
+                <div class="input-field col s6">
+                  <input class="center teal" name="group1" type="radio" id="reais" checked=""/>
+                  <label for="reais">R$</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input class="center" name="group1" type="radio" id="porcentagem"/>
+                  <label for="porcentagem">%</label>
+                </div>
+              </div>
+            </div>
+
+            <div id="map"></div>
+
+            <div class="card-action">
+              <button type="submit" class="waves-effect waves-teal btn-flat teal-text center">Cadastrar</button>
+              <a href="" ng-click="limparCampos()" class="waves-effect waves-red btn-flat right red-text center">Cancelar</a>
+            </div>
+          </div>
         </div>
-    </main>
+      </form>
+    </div>
+  </main>
 
-    <footer>
+  <footer>
 
-    </footer>
+  </footer>
 </div>
 
 
 <script>
 $(document).ready(function(){
-    $( "#latitude" ).focus();
-    $( "#longitude" ).focus();
+  $( "#raioAlcance" ).focus();
+  $( "#latitude" ).focus();
+  $( "#longitude" ).focus();
 });
 
 </script>
