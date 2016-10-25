@@ -1,4 +1,4 @@
-app.factory('UsuarioService', function($http, $rootScope, $location){
+app.factory('ClienteService', function($http, $rootScope, $location){
     return {
 
         validarSenha: function(email, senha){

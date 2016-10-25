@@ -1,8 +1,5 @@
-app.controller('relatorioCtrl', function($scope, $location){
+app.controller('relatorioCtrl', function($scope, $rootScope, $location){
 
-  $scope.usuario = {
-    nome : "Email Teste",
-    email : "email@email.com.br"
-  };
+  	$scope.usuario = $rootScope.usuario;
 
 });
