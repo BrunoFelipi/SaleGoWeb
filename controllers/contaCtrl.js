@@ -1,8 +1,7 @@
-app.controller('contaCtrl', function($scope, $location, $rootScope, UsuarioService){
+app.controller('contaCtrl', function($scope, $location, $rootScope, ClienteService, EmpresaService){
 
-    $scope.nome = $rootScope.usuario.nome;
-    $scope.email = $rootScope.usuario.email;
-
+    $scope.usuario = $rootScope.usuario;
+	
     $scope.closeModal = function(){
         $('#modalAlterarSenha').closeModal();
     }
