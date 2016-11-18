@@ -1,8 +1,12 @@
 app.run(function($rootScope){
 
-  $rootScope.usuario = {
-      nome: 'Teste',
-      email: 'teste@teste.com.br'
-  }
-  
+  $rootScope.empresa = {
+      id: -1,
+      nome: 'null',
+      cnpj: 'null',
+      email: 'null',
+      ativo: 'n',
+
+  };
+
 });

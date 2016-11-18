@@ -1,7 +1,8 @@
 <?php
 include '../conexao.php';
     $data = json_decode(file_get_contents('php://input'), true);
-    $email = addslashes($data['email']);
+
+    $email = $data['email'];
     $senha = md5($data['senha']);
 
     $sql = "SELECT * FROM empresa where email = '$email' AND senha = '$senha'";

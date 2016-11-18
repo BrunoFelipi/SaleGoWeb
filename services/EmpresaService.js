@@ -18,7 +18,7 @@ app.factory('EmpresaService', function($http, $rootScope, $location){
         select: function(email){
             return $http({
                 method: 'get',
-                url: 'ws/usuario/select.php',
+                url: 'ws/empresa/select.php',
                 params: {email: email}
             });
         },

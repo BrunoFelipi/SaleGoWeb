@@ -108,18 +108,18 @@ header, main, footer {
                             <div class="divider"></div>
                             <div class="row" style="padding-top: 20px">
                                 <div class="input-field col s12">
-                                    <input placeholder="" onblur="initMap()"id="endereco" type="text" ng-model="endereco" class="validate">
+                                    <input placeholder="" onblur="initMap()"id="endereco" type="text" ng-model="ponto.endereco" class="validate">
                                     <label for="endereco">Endereço</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <textarea id="descricao" class="materialize-textarea"></textarea>
+                                    <textarea id="descricao" ng-model="ponto.descricao" class="materialize-textarea"></textarea>
                                     <label for="descricao">Descrição</label>
                                 </div>
 
                                 <div class="input-field col s12">
-                                    <input id="raioAlcance" ng-model="raioAlcance" type="number" class="validate" min="0" max="30">
+                                    <input id="raioAlcance" ng-model="ponto.raioAlcance" type="number" class="validate" min="0" max="30">
                                     <label for="descricao">Raio de Alcance (Km)</label>
                                 </div>
 
@@ -127,7 +127,7 @@ header, main, footer {
 
                             <div class="row" style="padding-top: 20px">
                                 <div class="input-field col s12">
-                                    <input placeholder="" id="valor" type="number" class="validate">
+                                    <input placeholder="" id="valor" ng-model="ponto.valor" type="number" class="validate">
                                     <label for="valor">Valor</label>
                                 </div>
                             </div>
