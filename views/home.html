@@ -93,16 +93,18 @@ header, main, footer {
                             <th data-field="raioAlcance">Raio de Alcance</th>
                             <th data-field="tipoDesconto">Tipo Desconto</th>
                             <th data-field="valor">Valor</th>
+                            <th data-field="ativo">Ativo</th>
                         </tr>
                     </thead>
 
-                    <tbody>
-                        <tr >
-                            <td>Desc Teste</td>
-                            <td>123456</td>
-                            <td>-12345</td>
-                            <td>R$</td>
-                            <td>5.00</td>
+                    <tbody ng-repeat="ponto in pontos">
+                        <tr>
+                            <td>{{ponto.descricao}}</td>
+                            <td>{{ponto.endereco}}</td>
+                            <td>{{ponto.raioAlcance}}</td>
+                            <td>{{ponto.tipoDesconto}}</td>
+                            <td>{{ponto.valor}}</td>
+                            <td>{{ponto.ativo}}</td>
                         </tr>
                     </tbody>
                 </table>

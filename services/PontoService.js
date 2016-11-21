@@ -1,11 +1,10 @@
 app.factory('PontoService', function($http, $rootScope, $location){
     return {
 
-        selectAll: function(idEmpresa){
+        selectAll: function(){
             return $http({
-                method: 'get',
-                url: 'ws/ponto/selectAll.php',
-                params: {idEmpresa: idEmpresa}
+                method: 'post',
+                url: 'ws/ponto/selectAll.php'
             });
         },
         insert: function(ponto){

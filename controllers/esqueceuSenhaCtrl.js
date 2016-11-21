@@ -1,5 +1,10 @@
 app.controller('esqueceuSenhaCtrl', function($scope, UsuarioService, toastr, $location){
 
+    if($rootScope.empresa.id < 1){
+        $location.path('login');
+        return;
+    }
+
     $scope.enviarEmail = function(){
 
         var promise = UsuarioService.enviarEmailEsqueceuSenha($scope.email);

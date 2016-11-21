@@ -1,18 +1,19 @@
 app.controller('contaCtrl', function($scope, $location, $rootScope, ClienteService, EmpresaService){
 
-    $scope.usuario = $rootScope.usuario;
-    $scope.nome = $scope.usuario.nome;
-    $scope.email = $scope.usuario.email;
+/* COMENTAR PARA TESTE
+    if($rootScope.empresa.id < 1){
+        $location.path('login');
+        return;
+    }
+*/
+
+    $scope.empresa = $rootScope.empresa;
 
     $scope.closeModal = function(){
         $('#modalAlterarSenha').closeModal();
     }
 
     $scope.alterarSenha = function(){
-
-        $scope.senhaAtu = document.getElementById("senhaAtual").value;
-        $scope.novaSen = document.getElementById("novaSenha").value;
-        $scope.confNovaSenha = document.getElementById("confirmarNovaSenha").value;
 
         if($scope.novaSen !== $scope.confNovaSenha){
             Materialize.toast('Senhas não conferem', 4000);
