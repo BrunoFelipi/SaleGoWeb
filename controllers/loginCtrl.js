@@ -4,7 +4,13 @@ app.controller('loginCtrl', function($scope, $rootScope, $location, toastr, Empr
 
     //Logar
     $scope.logar = function(usuario){
-
+        $rootScope.empresa.id = 2;
+        $rootScope.empresa.nome = 'Empresa Teste';
+        $rootScope.empresa.cnpj = '1234567890';
+        $rootScope.empresa.email = 'empresateste@teste.com.br';
+        $rootScope.empresa.ativo = 'sim';
+        $location.path('home');
+        /*
         var promise = EmpresaService.logar(usuario.email, usuario.senha);
         promise.then(function(response){
             if(response.data == 'true'){
@@ -37,7 +43,7 @@ app.controller('loginCtrl', function($scope, $rootScope, $location, toastr, Empr
             toastr.error('Erro de conexão com o Servidor','Erro');
         });
 
-
+*/
     };
 
 });

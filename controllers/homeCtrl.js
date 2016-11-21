@@ -12,10 +12,10 @@ app.controller('homeCtrl', function($scope, $rootScope, $location, PontoService)
 
   $scope.pontos = [];
 
-  var getPontos = PontoService.selectAll($scope.empresa.id);
-  getPontos.then(function(response){
+  var promise = PontoService.selectAll($scope.empresa.id);
+  promise.then(function(response){
+      console.log(response.data);
       $scope.pontos = response.data;
-      console.log($scope.pontos);
   }, function(error){
 
   });

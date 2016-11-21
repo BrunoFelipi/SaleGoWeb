@@ -18,8 +18,8 @@ header, main, footer {
                     <div class="userView">
                         <img class="background" src="resources/teal.jpg">
                         <a href=""><img class="circle" src="resources/bk1.jpg"></a>
-                        <a href=""><span class="white-text name">{{usuario.nome}}</span></a>
-                        <a href=""><span class="white-text email">{{usuario.email}}</span></a>
+                        <a href=""><span class="white-text name">{{empresa.nome}}</span></a>
+                        <a href=""><span class="white-text email">{{empresa.email}}</span></a>
                     </div>
                 </li>
 
@@ -62,15 +62,15 @@ header, main, footer {
 
                 <div class="row" style="padding-top: 20px">
                     <div class="input-field col s6">
-                        <input id="nome" ng-model="nome" type="text" class="validate">
+                        <input id="nome" ng-model="empresa.nome" type="text" class="validate">
                         <label for="nome">Nome</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="email" ng-model="email" type="text" class="validate" disabled="">
+                        <input id="email" ng-model="empresa.email" type="text" class="validate" disabled="">
                     </div>
                 </div>
 
-                <a href="#modalAlterarSenha" class="waves-effect waves-light btn teal modal-trigger">Alterar Senha</a>
+                <a href="#modalAlterarSenha" class="waves-effect waves-light btn teal modal-trigger">Trocar Senha</a>
 
 
                 <!-- Modal Structure -->

@@ -2,7 +2,7 @@
     $('.button-collapse').sideNav();
     $('.collapsible').collapsible();
 
-
+function initMap(){
     var myLatLng = {lat: -26.9166207, lng: -49.0717429};
 
     // Create a map object and specify the DOM element for display.
@@ -18,7 +18,7 @@
         position: myLatLng,
         title: 'Hello World!'
     });
-
+}
 </script>
 
 <style media="screen">
@@ -41,8 +41,8 @@ header, main, footer {
                     <div class="userView">
                         <img class="background" src="resources/teal.jpg">
                         <a href=""><img class="circle" src="resources/bk1.jpg"></a>
-                        <a href=""><span class="white-text name">{{usuario.nome}}</span></a>
-                        <a href=""><span class="white-text email">{{usuario.email}}</span></a>
+                        <a href=""><span class="white-text name">{{empresa.nome}}</span></a>
+                        <a href=""><span class="white-text email">{{empresa.email}}</span></a>
                     </div>
                 </li>
 
@@ -109,3 +109,10 @@ header, main, footer {
 
     </footer>
 </div>
+
+<script>
+$(document).ready(function(){
+    initMap();
+});
+
+</script>
