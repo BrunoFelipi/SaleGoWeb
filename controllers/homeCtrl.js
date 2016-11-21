@@ -8,7 +8,7 @@ app.controller('homeCtrl', function($scope, $rootScope, $location, PontoService)
 
   getPontos.then(function(response){
 
-      console.log($scope.empresa.id);
+      //console.log($scope.empresa.id);
 
   }, function(error){
 
