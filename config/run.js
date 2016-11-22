@@ -1,12 +1,11 @@
 app.run(function($rootScope){
 
-  $rootScope.empresa = {
-      id: 1,
+  $rootScope.empresaAtiva = {
+      id: 0,
       nome: 'null',
       cnpj: 'null',
       email: 'null',
-      ativo: 'n',
-
+      ativo: 'n'
   };
 
 });

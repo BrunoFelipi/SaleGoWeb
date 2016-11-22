@@ -1,13 +1,11 @@
 app.controller('contaCtrl', function($scope, $location, $rootScope, ClienteService, EmpresaService){
 
-/* COMENTAR PARA TESTE
     if($rootScope.empresa.id < 1){
         $location.path('login');
         return;
     }
-*/
 
-    $scope.empresa = $rootScope.empresa;
+    $scope.empresaAtiva = $rootScope.empresaAtiva;
 
     $scope.closeModal = function(){
         $('#modalAlterarSenha').closeModal();

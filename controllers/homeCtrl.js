@@ -1,23 +1,19 @@
 app.controller('homeCtrl', function($scope, $rootScope, $location, PontoService){
 
-    /* COMENTAR PARA TESTE
-        if($rootScope.empresa.id < 1){
-            $location.path('login');
-            return;
-        }
-    */
+    if($rootScope.empresaAtiva.id < 1){
+        $location.path('login');
+        return;
+    }
 
+    $scope.empresaAtiva = $rootScope.empresaAtiva;
+    $scope.pontos = [];
 
-  $scope.empresa = $rootScope.empresa;
+    var promise = PontoService.selectAll($scope.empresaAtiva.id);
 
-  $scope.pontos = [];
-
-  var promise = PontoService.selectAll($scope.empresa.id);
-  promise.then(function(response){
-      console.log(response.data);
-      $scope.pontos = response.data;
-  }, function(error){
-
-  });
+    promise.then(function(response){
+        $scope.pontos = response.data;
+    }, function(error){
+        Materialize.toast('Erro de conexão com o banco', 4000);
+    });
 
 });

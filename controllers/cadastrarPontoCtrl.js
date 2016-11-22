@@ -1,6 +1,6 @@
 app.controller('cadastrarPontoCtrl', function($scope, $rootScope, $location){
 
-  	$scope.empresa = $rootScope.empresa;
+  	$scope.empresaAtiva = $rootScope.empresaAtiva;
 
 	$scope.latitude = '-26.9166207';
 	$scope.longitude = '-49.0717429';

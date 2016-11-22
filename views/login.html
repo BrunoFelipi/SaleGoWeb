@@ -16,7 +16,7 @@ $(document).ready(function() {
     </header>
 
     <main>
-        <form name="formulario" ng-submit="logar(usuario)">
+        <form name="formulario" ng-submit="logar(empresa)">
             <div class="container" style="padding-top: 50px">
                 <div class="row">
                     <div class="col s12 m10 l10 offset-m1 offset-l1">
@@ -31,11 +31,11 @@ $(document).ready(function() {
                                     <h5 class="center teal-text">Login</h5>
                                     <br>
                                     <div class="input-field">
-                                        <input id="email" type="email" name="email" class="validate" ng-model="usuario.email" required>
+                                        <input id="email" type="email" name="email" class="validate" ng-model="empresa.email" required>
                                         <label for="email" data-error="E-mail inválido">E-mail</label>
                                     </div>
                                     <div class="input-field">
-                                        <input id="senha" type="password" name="senha" class="validate" ng-model="usuario.senha" minlenght="8" required>
+                                        <input id="senha" type="password" name="senha" class="validate" ng-model="empresa.senha" minlenght="8" required>
                                         <label for="senha" data-error="A senha deve ter no mínimo 8 caracteres">Senha</label>
                                     </div>
                                 </div>

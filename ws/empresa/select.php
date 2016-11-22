@@ -1,7 +1,7 @@
 <?php
     include '../conexao.php';
     $email = addslashes($_GET["email"]);
-    $sql = "SELECT id,nome,cnpj,email,ativo FROM usuario where email = '$email'";
+    $sql = "SELECT id,nome,cnpj,email,ativo FROM empresa where email = '$email'";
     $rs = mysqli_query($conexao, $sql);
 
     $json = array();

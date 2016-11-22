@@ -18,8 +18,8 @@ header, main, footer {
                     <div class="userView">
                         <img class="background" src="resources/teal.jpg">
                         <a href=""><img class="circle" src="resources/bk1.jpg"></a>
-                        <a href=""><span class="white-text name">{{empresa.nome}}</span></a>
-                        <a href=""><span class="white-text email">{{empresa.email}}</span></a>
+                        <a href=""><span class="white-text name">{{empresaAtiva.nome}}</span></a>
+                        <a href=""><span class="white-text email">{{empresaAtiva.email}}</span></a>
                     </div>
                 </li>
 
@@ -62,11 +62,11 @@ header, main, footer {
 
                 <div class="row" style="padding-top: 20px">
                     <div class="input-field col s6">
-                        <input id="nome" ng-model="empresa.nome" type="text" class="validate">
+                        <input id="nome" ng-model="empresaAtiva.nome" type="text" class="validate">
                         <label for="nome">Nome</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="email" ng-model="empresa.email" type="text" class="validate" disabled="">
+                        <input id="email" ng-model="empresaAtiva.email" type="text" class="validate" disabled="">
                     </div>
                 </div>
 

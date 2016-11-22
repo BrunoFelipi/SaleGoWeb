@@ -1,0 +1,32 @@
+<div ng-controller="homeCtrl">
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <table class="responsive-table striped">
+                    <thead>
+                        <tr>
+                            <th data-field="descricao">Teste1</th>
+                            <th data-field="endereco">Teste2</th>
+                            <th data-field="raioAlcance">Teste3</th>
+                            <th data-field="tipoDesconto">Teste4</th>
+                            <th data-field="valor">Teste5</th>
+                            <th data-field="ativo">Teste6</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr ng-repeat="ponto in pontos">
+                            <td>{{ponto.descricao}}</td>
+                            <td>{{ponto.endereco}}</td>
+                            <td>{{ponto.raioAlcance}}</td>
+                            <td>{{ponto.tipoDesconto}}</td>
+                            <td>{{ponto.valor}}</td>
+                            <td>{{ponto.ativo}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>

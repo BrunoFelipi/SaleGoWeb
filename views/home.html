@@ -41,8 +41,8 @@ header, main, footer {
                     <div class="userView">
                         <img class="background" src="resources/teal.jpg">
                         <a href=""><img class="circle" src="resources/bk1.jpg"></a>
-                        <a href=""><span class="white-text name">{{empresa.nome}}</span></a>
-                        <a href=""><span class="white-text email">{{empresa.email}}</span></a>
+                        <a href=""><span class="white-text name">{{empresaAtiva.nome}}</span></a>
+                        <a href=""><span class="white-text email">{{empresaAtiva.email}}</span></a>
                     </div>
                 </li>
 
@@ -81,8 +81,8 @@ header, main, footer {
                 <table class="responsive-table striped">
                     <thead>
                         <tr>
-                            <th data-field="descricao">Descrição</th>
                             <th data-field="endereco">Endereço</th>
+                            <th data-field="descricao">Descrição</th>
                             <th data-field="raioAlcance">Raio de Alcance</th>
                             <th data-field="tipoDesconto">Tipo Desconto</th>
                             <th data-field="valor">Valor</th>
@@ -90,10 +90,10 @@ header, main, footer {
                         </tr>
                     </thead>
 
-                    <tbody ng-repeat="ponto in pontos">
-                        <tr>
-                            <td>{{ponto.descricao}}</td>
+                    <tbody>
+                        <tr ng-repeat="ponto in pontos">
                             <td>{{ponto.endereco}}</td>
+                            <td>{{ponto.descricao}}</td>
                             <td>{{ponto.raioAlcance}}</td>
                             <td>{{ponto.tipoDesconto}}</td>
                             <td>{{ponto.valor}}</td>
