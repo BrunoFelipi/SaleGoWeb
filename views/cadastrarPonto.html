@@ -130,12 +130,18 @@ header, main, footer {
 
                             <div class="row">
                                 <div class="input-field col s6">
-                                    <select class="icons">
+                                    <select class="icons" ng-model="ponto.tipo">
                                         <option value="" selected data-icon="resources/money-bag.png" class="left circle">R$</option>
                                         <option value="" data-icon="resources/sales.png" class="left circle">%</option>
                                     </select>
                                     <label>Tipo de desconto</label>
                                 </div>
+                            </div>
+
+                            <!-- Data -->
+                            <div class="input-field">
+                                <input type="date" class="datepicker" id="data" ng-model="data" required>
+                                <label>Data</label>
                             </div>
 
                             <div id="map"></div>
@@ -151,7 +157,7 @@ header, main, footer {
         </main>
 
         <footer>
-
+            {{data}}
         </footer>
     </div>
 
@@ -160,6 +166,10 @@ header, main, footer {
     $(document).ready(function(){
         $( "#raioAlcance" ).focus();
         $( "#endereco" ).focus();
+        $('.datepicker').pickadate({
+           selectMonths: true, // Creates a dropdown to control month
+           selectYears: 5 // Creates a dropdown of 15 years to control year
+         });
         $('select').material_select();
         initMap();
     });
