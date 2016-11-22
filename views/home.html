@@ -1,26 +1,3 @@
-<script type="text/javascript">
-    $('.button-collapse').sideNav();
-    $('.collapsible').collapsible();
-
-function initMap(){
-    var myLatLng = {lat: -26.9166207, lng: -49.0717429};
-
-    // Create a map object and specify the DOM element for display.
-    var map = new google.maps.Map(document.getElementById('map'), {
-        center: myLatLng,
-        scrollwheel: false,
-        zoom: 18
-    });
-
-    // Create a marker and set its position.
-    var marker = new google.maps.Marker({
-        map: map,
-        position: myLatLng,
-        title: 'Hello World!'
-    });
-}
-</script>
-
 <style media="screen">
 header, main, footer {
     padding-left: 300px;
@@ -33,7 +10,7 @@ header, main, footer {
 </style>
 
 <div ng-controller="homeCtrl">
-
+    <!--
     <header>
         <nav class="side-nav fixed grey lighten-4">
             <ul>
@@ -72,10 +49,12 @@ header, main, footer {
             </ul>
         </nav>
     </header>
-
+-->
     <main>
+        <!--
         <div id="map"></div>
         <br>
+        -->
         <div class="container">
             <div class="row">
                 <table class="responsive-table striped">
@@ -87,6 +66,7 @@ header, main, footer {
                             <th data-field="tipoDesconto">Tipo Desconto</th>
                             <th data-field="valor">Valor</th>
                             <th data-field="ativo">Ativo</th>
+                            <th data-field="usuarios">Usuários</th>
                         </tr>
                     </thead>
 
@@ -98,6 +78,7 @@ header, main, footer {
                             <td>{{ponto.tipoDesconto}}</td>
                             <td>{{ponto.valor}}</td>
                             <td>{{ponto.ativo}}</td>
+                            <td>{{ponto.qtdClientes}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -111,8 +92,29 @@ header, main, footer {
 </div>
 
 <script>
+
 $(document).ready(function(){
+    $('.button-collapse').sideNav();
+    $('.collapsible').collapsible();
     initMap();
 });
+
+function initMap(){
+    var myLatLng = {lat: -26.9166207, lng: -49.0717429};
+
+    // Create a map object and specify the DOM element for display.
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: myLatLng,
+        scrollwheel: false,
+        zoom: 18
+    });
+
+    // Create a marker and set its position.
+    var marker = new google.maps.Marker({
+        map: map,
+        position: myLatLng,
+        title: 'Hello World!'
+    });
+}
 
 </script>
