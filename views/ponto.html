@@ -9,7 +9,7 @@ header, main, footer {
 }
 </style>
 
-<div ng-controller="homeCtrl">
+<div ng-controller="pontoCtrl">
     <!--
     <header>
         <nav class="side-nav fixed grey lighten-4">
@@ -57,6 +57,11 @@ header, main, footer {
         -->
         <div class="container">
             <div class="row">
+
+                <input type="text" class="datepicker" id="dia" ng-model="dia" ng-change="abc()">
+                {{dia}}
+				{{teste}}
+
                 <table class="responsive-table striped">
                     <thead>
                         <tr>
@@ -71,14 +76,14 @@ header, main, footer {
                     </thead>
 
                     <tbody>
-                        <tr ng-repeat="ponto in pontos">
-                            <td>{{ponto.endereco}}</td>
-                            <td>{{ponto.descricao}}</td>
-                            <td>{{ponto.raioAlcance}}</td>
-                            <td>{{ponto.tipoDesconto}}</td>
-                            <td>{{ponto.valor}}</td>
-                            <td>{{ponto.ativo}}</td>
-                            <td><a href="" ng-click="viewClienteGetPonto(ponto.id)">{{ponto.qtdClientes}}</a></td>
+                        <tr ng-repeat="p in ponto">
+                            <td>{{p.endereco}}</td>
+                            <td>{{p.descricao}}</td>
+                            <td>{{p.raioAlcance}}</td>
+                            <td>{{p.tipoDesconto}}</td>
+                            <td>{{p.valor}}</td>
+                            <td>{{p.ativo}}</td>
+                            <!--<td><a href="" ng-click="viewClienteGetPonto(ponto.id)">{{ponto.qtdClientes}}</a></td>-->
                         </tr>
                     </tbody>
                 </table>
@@ -96,6 +101,10 @@ header, main, footer {
 $(document).ready(function(){
     $('.button-collapse').sideNav();
     $('.collapsible').collapsible();
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15 // Creates a dropdown of 15 years to control year
+    });
     initMap();
 });
 

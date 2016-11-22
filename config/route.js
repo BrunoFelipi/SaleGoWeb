@@ -21,4 +21,7 @@ app.config(function($routeProvider){
     .when('/conta', {
         templateUrl: 'views/conta.html'
     })
+    .when('/ponto/:id', {
+        templateUrl: 'views/ponto.html'
+    })
 });
