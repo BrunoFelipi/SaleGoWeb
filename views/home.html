@@ -9,8 +9,8 @@ header, main, footer {
 }
 </style>
 
-<div ng-controller="homeCtrl">
-    <!--
+<div id="divHome" ng-controller="homeCtrl">
+    
     <header>
         <nav class="side-nav fixed grey lighten-4">
             <ul>
@@ -49,36 +49,36 @@ header, main, footer {
             </ul>
         </nav>
     </header>
--->
+
     <main>
-        <!--
         <div id="map"></div>
         <br>
-        -->
         <div class="container">
             <div class="row">
                 <table class="responsive-table striped">
                     <thead>
                         <tr>
-                            <th data-field="endereco">Endereço</th>
-                            <th data-field="descricao">Descrição</th>
-                            <th data-field="raioAlcance">Raio de Alcance</th>
-                            <th data-field="tipoDesconto">Tipo Desconto</th>
-                            <th data-field="valor">Valor</th>
-                            <th data-field="ativo">Ativo</th>
-                            <th data-field="usuarios">Usuários</th>
+                            <th class="center"data-field="endereco">Endereço</th>
+                            <th class="center"data-field="descricao">Descrição</th>
+                            <th class="center" data-field="raioAlcance">Raio de Alcance</th>
+                            <th class="center" data-field="tipoDesconto">Tipo Desconto</th>
+                            <th class="center" data-field="valor">Valor</th>
+                            <th class="center" data-field="ativo">Ativo</th>
+                            <th class="center" data-field="dataVencimento">Data de Vencimento</th>
+                            <th class="center" data-field="usuarios">Usuários</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <tr ng-repeat="ponto in pontos">
-                            <td>{{ponto.endereco}}</td>
-                            <td>{{ponto.descricao}}</td>
-                            <td>{{ponto.raioAlcance}}</td>
-                            <td>{{ponto.tipoDesconto}}</td>
-                            <td>{{ponto.valor}}</td>
-                            <td>{{ponto.ativo}}</td>
-                            <td><a href="" ng-click="viewClienteGetPonto(ponto.id)">{{ponto.qtdClientes}}</a></td>
+                            <td class="center">{{ponto.endereco}}</td>
+                            <td class="center">{{ponto.descricao}}</td>
+                            <td class="center">{{ponto.raioAlcance}}</td>
+                            <td class="center">{{ponto.tipoDesconto}}</td>
+                            <td class="center">{{ponto.valor}}</td>
+                            <td class="center">{{ponto.ativo}}</td>
+                            <td class="center">{{ponto.dataVencimento}}</td>                            
+                            <td class="center"><a href="" ng-click="viewClienteGetPonto(ponto.id)">{{ponto.qtdClientes}}</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -95,26 +95,9 @@ header, main, footer {
 
 $(document).ready(function(){
     $('.button-collapse').sideNav();
-    $('.collapsible').collapsible();
-    initMap();
+    $('.collapsible').collapsible();    
+    angular.element(document.getElementById('divHome')).scope().initMap();
 });
 
-function initMap(){
-    var myLatLng = {lat: -26.9166207, lng: -49.0717429};
-
-    // Create a map object and specify the DOM element for display.
-    var map = new google.maps.Map(document.getElementById('map'), {
-        center: myLatLng,
-        scrollwheel: false,
-        zoom: 18
-    });
-
-    // Create a marker and set its position.
-    var marker = new google.maps.Marker({
-        map: map,
-        position: myLatLng,
-        title: 'Hello World!'
-    });
-}
 
 </script>

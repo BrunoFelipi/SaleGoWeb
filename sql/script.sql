@@ -13,12 +13,14 @@ CREATE TABLE  ponto (
   id int(8) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   idEmpresa int(8) DEFAULT NULL,
   endereco varchar(200) DEFAULT NULL,
+  latitude long,
+  longitude long,
   descricao varchar(200) DEFAULT NULL,
   raioAlcance varchar(100) DEFAULT NULL,
   valor varchar(100) DEFAULT NULL,
   tipoDesconto varchar(10) DEFAULT NULL,
   qtdClientes int(8),
-  dataValidade datetime,
+  dataVencimento datetime,
   ativo char(1)
 );
 

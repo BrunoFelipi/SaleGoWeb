@@ -4,6 +4,8 @@
 
     $idEmpresa = $data['idEmpresa'];
     $endereco = $data['endereco'];
+    $latitude = $data['latitude'];
+    $longitude = $data['longitude'];
     $descricao = $data['descricao'];
     $raioAlcance = $data['raioAlcance'];
     $valor = $data['valor'];
@@ -12,7 +14,7 @@
     $dataValidade = $data['dataValidade'];
     $ativo = 's';
 
-    $sql = "INSERT INTO ponto VALUES (0,'$idEmpresa','$endereco','$descricao','$raioAlcance','$valor','$tipoDesconto','$qtdClientes',STR_TO_DATE('$dataValidade','%d/%m/%Y'),'$ativo')";
+    $sql = "INSERT INTO ponto VALUES (0,'$idEmpresa','$endereco','$latitude','$longitude','$descricao','$raioAlcance','$valor','$tipoDesconto','$qtdClientes',STR_TO_DATE('$dataValidade','%d/%m/%Y'),'$ativo')";
 
     if(mysqli_query($conexao, $sql)){
         print "true";

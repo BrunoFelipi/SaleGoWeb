@@ -1,59 +1,30 @@
 <script type="text/javascript">
 $(".button-collapse").sideNav();
-/*
-function initMap() {
-
-    // Create a map object and specify the DOM element for display.
-    var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -26.872519, lng: -49.3869241},
-        scrollwheel: false,
-        zoom: 8
-    });
-
-    geocoder = new google.maps.Geocoder();
-
-    // Create a marker and set its position.
-    var marker = new google.maps.Marker({
-        map: map,
-        draggable: false,
-    });
-
-    geocoder.geocode({ 'address': document.getElementById('endereco').value, 'region': 'BR' }, function (results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-            if (results[0]) {
-                var latitude = results[0].geometry.location.lat();
-                var longitude = results[0].geometry.location.lng();
-                var location = new google.maps.LatLng(latitude, longitude);
-                marker.setPosition(location);
-                map.setCenter(location);
-                map.setZoom(18);
-            }
-        }
-    });
-}
-*/
 </script>
 
 <style media="screen">
-header, main, footer {
-    padding-left: 300px;
-}
-
-@media only screen and (max-width : 992px) {
-    header, main, footer {
-        padding-left: 0;
+    header,
+    main,
+    footer {
+        padding-left: 300px;
     }
-}
-
-#map {
-    height: 400px;
-    width: 100%;
-}
-
+    
+    @media only screen and (max-width: 992px) {
+        header,
+        main,
+        footer {
+            padding-left: 0;
+        }
+    }
+    
+    #map {
+        height: 400px;
+        width: 100%;
+    }
 </style>
 
-<div ng-controller="cadastrarPontoCtrl">
-<!--
+<div id="divCadastrarPonto" ng-controller="cadastrarPontoCtrl">
+
     <header>
         <nav class="side-nav fixed grey lighten-4">
             <ul>
@@ -92,89 +63,83 @@ header, main, footer {
             </ul>
         </nav>
     </header>
--->
+
     <main>
         <div class="container">
             <form style="padding-top: 30px" ng-submit="cadastrarPonto(ponto)">
-                <div class="card horizontal">
-                    <div class="card-stacked">
-                        <div class="card-content">
-                            <h4 class="center teal-text">.</h4>
-                            <br>
-                            <div class="divider"></div>
-                            <div class="row" style="padding-top: 20px">
-                                <div class="input-field col s12">
-                                    <!--<input placeholder="" onblur="initMap()" id="endereco" type="text" ng-model="ponto.endereco" class="validate">-->
-                                    <input placeholder="" id="endereco" type="text" ng-model="ponto.endereco" class="validate" required>
-                                    <label for="endereco">Endereço</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <textarea id="descricao" ng-model="ponto.descricao" class="materialize-textarea" required></textarea>
-                                    <label for="descricao">Descrição</label>
-                                </div>
-
-                                <div class="input-field col s12">
-                                    <input id="raioAlcance" ng-model="ponto.raioAlcance" type="number" class="validate" min="0" max="30" required>
-                                    <label for="descricao">Raio de Alcance (Km)</label>
-                                </div>
-
-                            </div>
-
-                            <div class="row" style="padding-top: 20px">
-                                <div class="input-field col s12">
-                                    <input placeholder="" id="valor" ng-model="ponto.valor" type="number" class="validate" required>
-                                    <label for="valor">Valor</label>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <select class="icons" ng-model="ponto.tipoDesconto">
-                                        <option value="" disabled ng-selected="publicacao.tipoDesconto==null">Selecione um tipo</option>
-                                        <option value="R$" selected ng-selected="publicacao.tipoDesconto=='R$'" data-icon="resources/money-bag.png" class="left circle">R$</option>
-                                        <option value="%" ng-selected="publicacao.tipoDesconto=='%'" data-icon="resources/sales.png" class="left circle">%</option>
-                                    </select>
-                                    <label>Tipo de desconto</label>
-                                </div>
-                            </div>
-
-                            <!-- Data -->
-                            <div class="input-field">
-                                <input type="text" class="datepicker" id="dataValidade" ng-model="ponto.dataValidade">
-                                <label>Data de Validade</label>
-                            </div>
-                            <!--
-                            <div id="map"></div>
-                            -->
-                            <div class="card-action">
-                                <button type="submit" class="waves-effect waves-teal btn-flat teal-text center">Cadastrar</button>
-                                <a href="" ng-click="limparCampos()" class="waves-effect waves-red btn-flat right red-text center">Cancelar</a>
-                            </div>
-                        </div>
+                <h4 class="center teal-text">Cadastrar Ponto</h4>
+                <br>
+                <div class="divider"></div>
+                <div class="row" style="padding-top: 20px">
+                    <div class="input-field col s12">
+                        <!--<input placeholder="" ng-blur="initMap()" id="endereco" type="text" ng-model="ponto.endereco" class="validate">-->
+                        <input placeholder="" ng-blur="initMap()" id="endereco" type="text" ng-model="ponto.endereco" class="validate" required>
+                        <label for="endereco">Endereço</label>
                     </div>
-                </form>
-            </div>
-        </main>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="descricao" ng-model="ponto.descricao" class="materialize-textarea" required></textarea>
+                        <label for="descricao">Descrição</label>
+                    </div>
 
-        <footer>
+                    <div class="input-field col s12">
+                        <input id="raioAlcance" ng-model="ponto.raioAlcance" type="number" class="validate" min="0" max="30" required>
+                        <label for="descricao">Raio de Alcance (Km)</label>
+                    </div>
 
-        </footer>
-    </div>
+                </div>
 
+                <div class="row" style="padding-top: 20px">
+                    <div class="input-field col s12">
+                        <input placeholder="" id="valor" ng-model="ponto.valor" type="number" class="validate" required>
+                        <label for="valor">Valor</label>
+                    </div>
+                </div>
 
-    <script>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select class="icons" ng-model="ponto.tipoDesconto">
+                            <option value="" disabled ng-selected="publicacao.tipoDesconto==null">Selecione um tipo</option>
+                            <option value="R$" selected ng-selected="publicacao.tipoDesconto=='R$'" data-icon="resources/money-bag.png" class="left circle">R$</option>
+                            <option value="%" ng-selected="publicacao.tipoDesconto=='%'" data-icon="resources/sales.png" class="left circle">%</option>
+                        </select>
+                        <label>Tipo de desconto</label>
+                    </div>
+                </div>
+
+                <!-- Data -->
+                <div class="input-field">
+                    <input type="text" class="datepicker" id="dataValidade" ng-model="ponto.dataValidade">
+                    <label>Data de Validade</label>
+                </div>
+
+                <div id="map"></div>
+                <br>
+                <div class="divider"></div>
+                <br>
+                <button type="submit" class="waves-effect waves-teal btn-flat teal-text center">Cadastrar</button>
+                <a href="" ng-click="limparCampos()" class="waves-effect waves-red btn-flat right red-text center">Cancelar</a>
+                <br>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
+</div>
+
+<script>
     $(document).ready(function(){
-        $( "#raioAlcance" ).focus();
-        $( "#endereco" ).focus();
+        $("#raioAlcance").focus();
+        $("#endereco").focus();
         $('.datepicker').pickadate({
            selectMonths: true, // Creates a dropdown to control month
            selectYears: 5, // Creates a dropdown of 15 years to control year
            format: 'dd/mm/yyyy'
          });
         $('select').material_select();
-        //initMap();
+       angular.element(document.getElementById('divCadastrarPonto')).scope().initMap();
     });
-
-    </script>
+</script>
