@@ -46,7 +46,7 @@ app.controller('cadastrarPontoCtrl', function ($scope, $rootScope, $route, $loca
         var map = new google.maps.Map(document.getElementById('map'), {
             center: new google.maps.LatLng($scope.latitude, $scope.longitude),
             scrollwheel: true,
-            zoom: 17
+            zoom: 12
         });
 
         geocoder = new google.maps.Geocoder();
@@ -68,6 +68,14 @@ app.controller('cadastrarPontoCtrl', function ($scope, $rootScope, $route, $loca
                     map.setZoom(17);
                 }
             }
+        });
+
+        var infowindow = new google.maps.InfoWindow({
+          content: secretMessage
+        });
+
+        marker.addListener('click', function() {
+          infowindow.open(marker.get('map'), marker);
         });
     }
 });
