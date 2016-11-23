@@ -14,7 +14,8 @@ app.factory('PontoService', function($http, $rootScope, $location){
                 data: {idPonto: idPonto}
             });
         },
-        insert: function(ponto){
+        insert: function(idEmpresa, ponto){
+            ponto.idEmpresa = idEmpresa;
             return $http({
                 method: 'post',
                 url: 'ws/ponto/insert.php',

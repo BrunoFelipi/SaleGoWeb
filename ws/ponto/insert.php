@@ -2,15 +2,19 @@
     include '../conexao.php';
     $data = json_decode(file_get_contents('php://input'), true);
 
-    $nome = $data['nome'];
-    $email =$data['email'];
-    $senha = md5($data['senha']);
-    $token = md5($nome.''.$email);
+    $idEmpresa = $data['idEmpresa'];
+    $endereco = $data['endereco'];
+    $descricao = $data['descricao'];
+    $raioAlcance = $data['raioAlcance'];
+    $valor = $data['valor'];
+    $tipoDesconto = $data['tipoDesconto'];
+    $qtdClientes = 0;
+    $dataValidade = $data['dataValidade'];
+    $ativo = 's';
 
-    $sql = "INSERT INTO usuario VALUES (0,'$nome','$email','$senha','$token','s')";
-    $rs = mysqli_query($conexao, $sql);
+    $sql = "INSERT INTO ponto VALUES (0,'$idEmpresa','$endereco','$descricao','$raioAlcance','$valor','$tipoDesconto','$qtdClientes',STR_TO_DATE('$dataValidade','%d/%m/%Y'),'$ativo')";
 
-    if($rs){
+    if(mysqli_query($conexao, $sql)){
         print "true";
     } else {
         print "false";

@@ -18,6 +18,7 @@ CREATE TABLE  ponto (
   valor varchar(100) DEFAULT NULL,
   tipoDesconto varchar(10) DEFAULT NULL,
   qtdClientes int(8),
+  dataValidade datetime,
   ativo char(1)
 );
 
