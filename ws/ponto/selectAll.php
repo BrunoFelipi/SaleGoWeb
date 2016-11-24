@@ -4,7 +4,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 $idEmpresa = $data['idEmpresa'];
 
-$sql = "SELECT * FROM ponto where idEmpresa='$idEmpresa'";
+$sql = "SELECT * FROM ponto where idEmpresa='$idEmpresa' AND vencido='n'";
 
 $rs = mysqli_query($conexao, $sql);
 

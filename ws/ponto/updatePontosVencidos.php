@@ -4,7 +4,7 @@
 
     $idEmpresa = $data['idEmpresa'];
 
-    $sql = "DELETE FROM ponto WHERE dataValidade < NOW() AND idEmpresa = '$idEmpresa'";
+    $sql = "UPDATE ponto SET vencido='s' WHERE dataVencimento < NOW() AND idEmpresa = '$idEmpresa'";
 
     if(mysqli_query($conexao, $sql)){
         print "true";

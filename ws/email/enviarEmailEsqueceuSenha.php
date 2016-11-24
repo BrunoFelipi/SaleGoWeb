@@ -1,14 +1,13 @@
 <?php
 	$data = json_decode(file_get_contents('php://input'), true);
-
-	// DADOS DA EMPRESA
-	$nome = $data['nome'];
-	$email = $data['email'];
-	$token = $data['token'];
-
-	// DADOS PARA ENVIO DE EMAIL
-	$from = 'salego@gmail.com';
-	$para = $email;
+	$de = $data['de'];
+	$para = $data['para'];
+    $tipo = $data['tipo'];
+    $titulo = $data['titulo'];
+    $conteudo = $data['conteudo'];
+    $tag = $data['tag'];
+	$nomeImagem = $data['nomeImagem'];
+	$token = md5($de);
 
 	//Inclui o arquivo class.phpmailer.php localizado na pasta do phpmailer
 	//require_once("../phpmailer/class.phpmailer.php");
@@ -26,7 +25,7 @@
 		$mail->SMTPAuth = false;  // Usar autenticação SMTP (obrigatório para smtp.seudomínio.com.br)
 		$mail->SMTPSecure = 'tls'; //Tipo de segurança do SMTP
 		$mail->Port 	= 25; //  Usar 587 porta SMTP
-		$mail->Username = "bruno.souza@senior.com.br"; // Usuário do servidor SMTP (endereço de email)
+		$mail->Username = $de; // Usuário do servidor SMTP (endereço de email)
 		$mail->CharSet = "UTF-8";
 		//$mail->Password = base64_decode('dmluaWNpdXM1'); // Senha do servidor SMTP (senha do email usado)
 
@@ -84,13 +83,13 @@
 
 								<table bgcolor=''>
 									<tr>
-										<td class='small' width='20%' style='vertical-align: top; padding-right:10px;'><img width='200px' height='200px' src='../../resources/nomeImagem.jpg' /></td>
+										<td class='small' width='20%' style='vertical-align: top; padding-right:10px;'><img width='200px' height='200px' src='../../resources/$nomeImagem.jpg' /></td>
 										<td class='small' style='vertical-align: top'>
-											<h4><b>tipo</b> - titulo</h4>
-											<p class=''>conteudo</p>
+											<h4><b>$tipo</b> - $titulo</h4>
+											<p class=''>$conteudo</p>
 											<br>
 											<h4><b>Tags</b></h4>
-											<p class=''>tag</p>
+											<p class=''>$tag</p>
 										</td>
 									</tr>
 								</table>
@@ -112,7 +111,7 @@
 									<tr>
 										<td align='center'>
 											<p>
-												<h5><a href='http://pcbnu006300:99/SaleGo/#/removerEmail/token'>Cancelar inscrição</a></h5>
+												<h5><a href='http://pcbnu006300/TecNews/#/removerEmail/$token'>Cancelar inscrição</a></h5>
 											</p>
 										</td>
 									</tr>

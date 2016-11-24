@@ -5,7 +5,7 @@ $(document).ready(function() {
 </script>
 
 <div ng-controller="loginCtrl" class="page-flexbox-wrapper">
-
+<!--
     <header>
         <nav class="nav-wrapper teal ">
             <div class="container">
@@ -14,9 +14,10 @@ $(document).ready(function() {
             </div>
         </nav>
     </header>
-
+-->
     <main>
         <form name="formulario" ng-submit="logar(empresa)">
+            <!--
             <div class="container" style="padding-top: 50px">
                 <div class="row">
                     <div class="col s12 m10 l10 offset-m1 offset-l1">
@@ -30,6 +31,7 @@ $(document).ready(function() {
                                 <div class="card-content">
                                     <h5 class="center teal-text">Login</h5>
                                     <br>
+                                    -->
                                     <div class="input-field">
                                         <input id="email" type="email" name="email" class="validate" ng-model="empresa.email" required>
                                         <label for="email" data-error="E-mail inválido">E-mail</label>
@@ -38,20 +40,23 @@ $(document).ready(function() {
                                         <input id="senha" type="password" name="senha" class="validate" ng-model="empresa.senha" minlenght="8" required>
                                         <label for="senha" data-error="A senha deve ter no mínimo 8 caracteres">Senha</label>
                                     </div>
+                                    <!--
                                 </div>
+                                -->
                                 <div class="card-action">
                                     <button type="submit" class="btn-flat teal-text waves-effect waves-teal center col s12 m12 l4">Entrar</button>
                                     <a href="#/senha" class="right teal-text btn-flat teal-text waves-effect waves-teal center col s12 m12 l6">Esqueceu a senha?</a>
                                 </div>
+                                <!--
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </form>
     </main>
 
-    <!-- Footes -->
+    <!-- Footer
     <footer class="page-footer teal">
         <div class="footer-copyright">
             <div class="container">
@@ -59,5 +64,6 @@ $(document).ready(function() {
             </div>
         </div>
     </footer>
+     -->
 
 </div>

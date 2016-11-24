@@ -8,25 +8,11 @@ app.factory('EmpresaService', function($http, $rootScope, $location){
                 params: {email: email, senha: senha}
             });
         },
-        cadastrarUsuario: function(nome, email, senha){
-            return $http({
-                method: 'post',
-                url: 'ws/usuario/insert.php',
-                data: {nome: nome, email: email, senha: senha}
-            });
-        },
         select: function(email){
             return $http({
                 method: 'get',
                 url: 'ws/empresa/select.php',
                 params: {email: email}
-            });
-        },
-        selectToken: function(token){
-            return $http({
-                method: 'get',
-                url: 'ws/usuario/selectToken.php',
-                params: {token: token}
             });
         },
         logar: function(email, senha){
@@ -36,13 +22,6 @@ app.factory('EmpresaService', function($http, $rootScope, $location){
               data: {email: email, senha: senha}
           });
         },
-        existEmail: function(email){
-            return $http({
-                method: 'get',
-                url: 'ws/usuario/existEmail.php',
-                params: {email: email}
-            });
-        },
         alterarSenha: function(email, senha){
             return $http({
                 method: 'post',
@@ -50,19 +29,14 @@ app.factory('EmpresaService', function($http, $rootScope, $location){
                 data: {email: email, senha: senha}
             });
         },
-		enviarEmailEsqueceuSenha: function(email, token){
+        enviarEmailEsqueceuSenha: function(empresa){
             return $http({
-                method: 'get',
-                url: 'ws/usuario/enviarEmailEsqueceuSenha.php',
-                params: {email: email, token: token}
+                method: 'post',
+                url: 'ws/empresa/enviarEmailEsqueceuSenha.php',
+                data: empresa
             });
-        },
-        enviarEmailAlterouSenha: function(email){
-            return $http({
-                method: 'get',
-                url: 'ws/usuario/enviarEmailAlterouSenha.php',
-                params: {email: email}
-            });
-        },
+        }
+
+        
     }
 });

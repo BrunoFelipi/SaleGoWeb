@@ -9,22 +9,23 @@ app.controller('homeCtrl', function ($scope, $rootScope, $location, PontoService
     $scope.empresaAtiva = $rootScope.empresaAtiva;
     $scope.pontos = [];
 
-    var promise = PontoService.selectAll($scope.empresaAtiva.id);
+    var promise = PontoService.updatePontosVencidos($scope.empresaAtiva.id);
     promise.then(function (response) {
-        $scope.pontos = response.data;
-    }, function (error) {
-        Materialize.toast('Erro de conexão com o banco', 4000);
-    });
+        
+        if (response.data == 'false') {
+            Materialize.toast('Erro ao deletar os pontos vencidos', 4000);
+        } 
 
-    $scope.excluirPontosVencidos = function () {
-
-        var promise = PontoService.deletePontosVencidos(0);
+        var promise = PontoService.selectAll($scope.empresaAtiva.id);
         promise.then(function (response) {
-            console.log(response);
+            $scope.pontos = response.data;
+            $scope.initMap();
         }, function (error) {
             Materialize.toast('Erro de conexão com o banco', 4000);
         });
-    }
+    }, function (error) {
+        Materialize.toast('Erro de conexão com o banco', 4000);
+    });
 
     $scope.viewClienteGetPonto = function (idPonto) {
         $location.path('ponto/' + idPonto);
@@ -43,7 +44,7 @@ app.controller('homeCtrl', function ($scope, $rootScope, $location, PontoService
 
         for (var ponto in $scope.pontos) {
             // Add the circle for this city to the map.
-            var centro = new google.maps.LatLng(parseFloat($scope.pontos[ponto].latitude),parseFloat($scope.pontos[ponto].longitude));
+            var centro = new google.maps.LatLng(parseFloat($scope.pontos[ponto].latitude), parseFloat($scope.pontos[ponto].longitude));
             var cityCircle = new google.maps.Circle({
                 title: 'Uluru (Ayers Rock)',
                 strokeColor: '#FF0000',

@@ -14,10 +14,10 @@ app.factory('PontoService', function($http, $rootScope, $location){
                 data: {idPonto: idPonto}
             });
         },
-        deletePontosVencidos: function(idEmpresa){
+        updatePontosVencidos: function(idEmpresa){
             return $http({
                 method: 'post',
-                url: 'ws/ponto/deletePontosVencidos.php',
+                url: 'ws/ponto/updatePontosVencidos.php',
                 data: {idEmpresa: idEmpresa}
             });
         },

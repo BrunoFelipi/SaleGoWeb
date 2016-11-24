@@ -14,13 +14,8 @@ app.controller('loginCtrl', function($scope, $rootScope, $location, toastr, Empr
                 promise.then(function(response){
 
                     $scope.empresaAtiva = response.data[0];
-                    console.log($scope.empresaAtiva.id);
                     if($scope.empresaAtiva.ativo == 's'){
-                        $rootScope.empresaAtiva.id = $scope.empresaAtiva.id;
-                        $rootScope.empresaAtiva.nome = $scope.empresaAtiva.nome;
-                        $rootScope.empresaAtiva.cnpj = $scope.empresaAtiva.cnpj;
-                        $rootScope.empresaAtiva.email = $scope.empresaAtiva.email;
-                        $rootScope.empresaAtiva.ativo = $scope.empresaAtiva.ativo;
+                        $rootScope.empresaAtiva = $scope.empresaAtiva;
                         $location.path('home');
                     } else {
                         Materialize.toast('Entre em contato com o administrador para ativar a empresa',2000);

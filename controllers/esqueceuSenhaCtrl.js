@@ -1,24 +1,35 @@
-app.controller('esqueceuSenhaCtrl', function($scope, EmpresaService, toastr, $location){
+app.controller('esqueceuSenhaCtrl', function ($scope, EmpresaService, $rootScope, $location) {
 
-    if($rootScope.empresa.id < 1){
-        $location.path('login');
-        return;
-    }
+    $scope.empresa = [];
 
-    $scope.enviarEmail = function(){
+    $scope.enviarEmail = function () {
 
-        var promise = EmpresaService.enviarEmailEsqueceuSenha($scope.email);
+        var promise = EmpresaService.select($scope.email);
+        promise.then(function (response) {
 
-        promise.then(function(response){
-            if(response.data == 'true'){
-                toastr.success('E-mail enviado com sucesso','Sucesso');
-                $location.path('login');
+            if (response.data[0] != null) {
+                $scope.empresa = response.data[0];
+
+                var promise = EmpresaService.enviarEmailEsqueceuSenha($scope.empresa);
+
+                promise.then(function (response) {
+                    console.log(response.data);
+                    if (response.data == 'true') {
+                        Materialize.toast('E-mail enviado com sucesso', 4000);
+                        $location.path('login');
+                    } else {
+                        Materialize.toast('Erro ao enviar e-mail', 4000);
+                    }
+                }, function (error) {
+                    Materialize.toast('Erro de conexão com Servidor', 4000);
+                });
+
             } else {
-                toastr.error('Erro ao enviar e-mail','Erro');
+                Materialize.toast('Email inválido', 4000);
             }
-        }, function(error){
-            toastr.error('Erro de conexão com Servidor','Erro');
+
+        }, function (error) {
+            Materialize.toast('Erro de conexão com Servidor', 4000);
         });
     };
-
 });
