@@ -1,14 +1,18 @@
 <style media="screen">
-    header, main, footer {
+    header,
+    main,
+    footer {
         padding-left: 300px;
     }
-
-    @media only screen and (max-width : 992px) {
-      header, main, footer {
-        padding-left: 0;
-      }
+    
+    @media only screen and (max-width: 992px) {
+        header,
+        main,
+        footer {
+            padding-left: 0;
+        }
     }
-
+    
     #map {
         height: 400px;
         width: 100%;
@@ -16,14 +20,14 @@
 </style>
 
 <div id="divHome" ng-controller="homeCtrl">
-    
+
     <header>
         <nav>
             <ul id="sideNav" class="side-nav fixed">
                 <li>
                     <div class="userView">
                         <img class="background" src="resources/teal.jpg">
-                        <a href="#/conta"><img class="circle" src="resources/bk1.jpg"></a>
+                        <a href="#/conta"><img class="circle" src="resources/download.png"></a>
                         <a href="#/conta"><span class="white-text name">{{empresaAtiva.nome}}</span></a>
                         <a href="#/conta"><span class="white-text email">{{empresaAtiva.email}}</span></a>
                     </div>
@@ -53,7 +57,7 @@
                 </li>
             </ul>
 
-            <div class="teal darken-1">
+            <div class="light-blue darken-2">
                 <div class="container">
                     <div class="nav-wrapper">
                         <a href="" data-activates="sideNav" class="button-collapse show-on-small"><i class="material-icons">menu</i></a>
@@ -72,14 +76,14 @@
                 <table class="responsive-table striped">
                     <thead>
                         <tr>
-                            <th class="center"data-field="endereco">Endereço</th>
-                            <th class="center"data-field="descricao">Descrição</th>
+                            <th class="center" data-field="endereco">Endereço</th>
+                            <th class="center" data-field="descricao">Descrição</th>
                             <th class="center" data-field="raioAlcance">Raio de Alcance</th>
                             <th class="center" data-field="tipoDesconto">Tipo Desconto</th>
                             <th class="center" data-field="valor">Valor</th>
                             <th class="center" data-field="ativo">Ativo</th>
                             <th class="center" data-field="dataVencimento">Data de Vencimento</th>
-                            <th class="center" data-field="usuarios">Usuários</th>
+                            <th class="center" data-field="clientes">Clientes</th>
                         </tr>
                     </thead>
 
@@ -90,8 +94,15 @@
                             <td class="center">{{ponto.raioAlcance}}</td>
                             <td class="center">{{ponto.tipoDesconto}}</td>
                             <td class="center">{{ponto.valor}}</td>
-                            <td class="center">{{ponto.ativo}}</td>
-                            <td class="center">{{ponto.dataVencimento}}</td>                            
+                            <td class="center">
+                                <div class="switch">
+                                    <label>                                        
+                                        <input ng-checked="ponto.ativo == 's'" ng-true-value="'s'" ng-false-value="'n'" ng-model="pontoAtivo" ng-click="ativar(ponto.id, pontoAtivo)" type="checkbox">
+                                        <span class="lever"></span>                                        
+                                    </label>
+                                </div>                                
+                            </td>
+                            <td class="center">{{ponto.dataVencimento}}</td>
                             <td class="center"><a href="" ng-click="viewClienteGetPonto(ponto.id)">{{ponto.qtdClientes}}</a></td>
                         </tr>
                     </tbody>
@@ -107,7 +118,7 @@
 
 <script>
 
-$(document).ready(function(){    
+$(document).ready(function(){
     $('.collapsible').collapsible();
     $(".button-collapse").sideNav();
     $('.button-collapse').sideNav('hide');

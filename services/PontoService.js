@@ -14,6 +14,13 @@ app.factory('PontoService', function($http, $rootScope, $location){
                 data: {idPonto: idPonto}
             });
         },
+        ativar: function(valor, idPonto){
+            return $http({
+                method: 'post',
+                url: 'ws/ponto/ativar.php',
+                data: {valor: valor, idPonto: idPonto}
+            });
+        },
         updatePontosVencidos: function(idEmpresa){
             return $http({
                 method: 'post',

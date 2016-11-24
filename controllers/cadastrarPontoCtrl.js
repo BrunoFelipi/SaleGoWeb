@@ -30,6 +30,7 @@ app.controller('cadastrarPontoCtrl', function ($scope, $rootScope, $route, $loca
 
         var promise = PontoService.insert($scope.empresaAtiva.id, $scope.latitude, $scope.longitude, ponto);
         promise.then(function (response) {
+            console.log(response);
             if (response.data == 'true') {
                 $route.reload();
                 Materialize.toast('Ponto cadastrado com sucesso', 2000);

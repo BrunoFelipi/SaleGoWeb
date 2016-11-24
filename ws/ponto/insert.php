@@ -13,8 +13,9 @@
     $qtdClientes = 0;
     $dataValidade = $data['dataValidade'];
     $ativo = 's';
+    $vencido = 'n';
 
-    $sql = "INSERT INTO ponto VALUES (0,'$idEmpresa','$endereco','$latitude','$longitude','$descricao','$raioAlcance','$valor','$tipoDesconto','$qtdClientes',STR_TO_DATE('$dataValidade','%d/%m/%Y'),'$ativo')";
+    $sql = "INSERT INTO ponto VALUES (0,'$idEmpresa','$endereco','$latitude','$longitude','$descricao','$raioAlcance','$valor','$tipoDesconto','$qtdClientes',STR_TO_DATE('$dataValidade','%d/%m/%Y'),'$ativo','$vencido')";
 
     if(mysqli_query($conexao, $sql)){
         print "true";

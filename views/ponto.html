@@ -17,9 +17,9 @@
 </style>
 
 <div ng-controller="pontoCtrl">
-    
+
     <header>
-                <nav>
+        <nav>
             <ul id="sideNav" class="side-nav fixed">
                 <li>
                     <div class="userView">
@@ -54,7 +54,7 @@
                 </li>
             </ul>
 
-            <div class="teal darken-1">
+            <div class="orange darken-4">
                 <div class="container">
                     <div class="nav-wrapper">
                         <a href="" data-activates="sideNav" class="button-collapse show-on-small"><i class="material-icons">menu</i></a>
@@ -66,35 +66,35 @@
     </header>
 
     <main>
-    
+
         <div id="map"></div>
         <br>
-    
+
         <div class="container">
             <div class="row">
 
                 <table class="responsive-table striped">
                     <thead>
                         <tr>
-                            <th data-field="endereco">Endereço</th>
-                            <th data-field="descricao">Descrição</th>
-                            <th data-field="raioAlcance">Raio de Alcance</th>
-                            <th data-field="tipoDesconto">Tipo Desconto</th>
-                            <th data-field="valor">Valor</th>
-                            <th data-field="ativo">Ativo</th>
-                            <th data-field="usuarios">Usuários</th>
+                            <th class="center" data-field="endereco">Endereço</th>
+                            <th class="center" data-field="descricao">Descrição</th>
+                            <th class="center" data-field="raioAlcance">Raio de Alcance</th>
+                            <th class="center" data-field="tipoDesconto">Tipo Desconto</th>
+                            <th class="center" data-field="valor">Valor</th>
+                            <th class="center" data-field="ativo">Ativo</th>
+                            <th class="center" data-field="clientes">Clientes</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <tr ng-repeat="p in ponto">
-                            <td>{{p.endereco}}</td>
-                            <td>{{p.descricao}}</td>
-                            <td>{{p.raioAlcance}}</td>
-                            <td>{{p.tipoDesconto}}</td>
-                            <td>{{p.valor}}</td>
-                            <td>{{p.ativo}}</td>
-                            <!--<td><a href="" ng-click="viewClienteGetPonto(ponto.id)">{{ponto.qtdClientes}}</a></td>-->
+                            <td class="center">{{p.endereco}}</td>
+                            <td class="center">{{p.descricao}}</td>
+                            <td class="center">{{p.raioAlcance}}</td>
+                            <td class="center">{{p.tipoDesconto}}</td>
+                            <td class="center">{{p.valor}}</td>
+                            <td class="center">{{p.ativo}}</td>
+                            <td class="center">{{p.qtdClientes}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -111,7 +111,7 @@
 
 $(document).ready(function(){
     $('.button-collapse').sideNav();
-    $('.collapsible').collapsible();            
+    $('.collapsible').collapsible();
     $('.button-collapse').sideNav('hide');
     initMap();
 });

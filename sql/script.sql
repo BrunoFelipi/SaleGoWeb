@@ -25,11 +25,11 @@ CREATE TABLE  ponto (
   vencido char(1)
 );
 
-insert into ponto values (0, 1, 'Rua São Paulo, 825', '-26.9086729', '-49.0744575', 'Senior Sistemas', '100', '10', '%', 3, '2016-11-23 13:18:03', 's');
-insert into ponto values (0, 0, 'Rua Nereu Ramos, blumenau', '-26.9264624', '-49.0631095', 'Nereu Ramos', '5', '3', 'R$', 0, '2016-11-30 00:00:00', 's');
-insert into ponto values (0, 0, 'Rua Virginia Ferreira, 181, Blumenau', '-26.8376666', '-49.1058147', 'Casa', '1', '2', 'R$', 0, '2016-12-26 00:00:00', 's');
-insert into ponto values (0, 0, 'Shopping neumatkt, blumenau', '-26.9211402', '-49.0697425', 'Shopping', '5', '10', '%', 0, '2016-11-30 00:00:00', 's');
-insert into ponto values (0, 0, 'Rua general osorio, 1525, blumenau', '-26.9140354', '-49.1104547', 'teste', '20', '1600', 'R$', 0, '2016-11-26 00:00:00', 's');
+insert into ponto values (0, 1, 'Rua São Paulo, 825', '-26.9086729', '-49.0744575', 'Senior Sistemas', '100', '10', '%', 3, '2016-11-23 13:18:03', 's','n');
+insert into ponto values (0, 0, 'Rua Nereu Ramos, blumenau', '-26.9264624', '-49.0631095', 'Nereu Ramos', '5', '3', 'R$', 0, '2016-11-30 00:00:00', 's','n');
+insert into ponto values (0, 0, 'Rua Virginia Ferreira, 181, Blumenau', '-26.8376666', '-49.1058147', 'Casa', '1', '2', 'R$', 0, '2016-12-26 00:00:00', 's','n');
+insert into ponto values (0, 0, 'Shopping neumatkt, blumenau', '-26.9211402', '-49.0697425', 'Shopping', '5', '10', '%', 0, '2016-11-30 00:00:00', 's','n');
+insert into ponto values (0, 0, 'Rua general osorio, 1525, blumenau', '-26.9140354', '-49.1104547', 'teste', '20', '1600', 'R$', 0, '2016-11-26 00:00:00', 's','n');
 
 create table pontosPegos(
   id int (8) primary key auto_increment,
