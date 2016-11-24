@@ -26,8 +26,8 @@ $(".button-collapse").sideNav();
 <div id="divCadastrarPonto" ng-controller="cadastrarPontoCtrl">
 
     <header>
-        <nav class="side-nav fixed grey lighten-4">
-            <ul>
+        <nav>
+            <ul id="sideNav" class="side-nav fixed">
                 <li>
                     <div class="userView">
                         <img class="background" src="resources/teal.jpg">
@@ -36,7 +36,6 @@ $(".button-collapse").sideNav();
                         <a href="#/conta"><span class="white-text email">{{empresaAtiva.email}}</span></a>
                     </div>
                 </li>
-
                 <li>
                     <a href="#/home" class="waves-effect" href=""><i class="material-icons">home</i>Home</a>
                 </li>
@@ -61,18 +60,24 @@ $(".button-collapse").sideNav();
                     <a href="#/login" class="waves-effect" href=""><i class="material-icons red-text">power_settings_new</i>Sair</a>
                 </li>
             </ul>
+
+            <div class="teal darken-1">
+                <div class="container">
+                    <div class="nav-wrapper">
+                        <a href="" data-activates="sideNav" class="button-collapse show-on-small"><i class="material-icons">menu</i></a>
+                        <a href="#" class="brand-logo center light">Cadastrar Ponto</a>
+                    </div>
+                </div>
+            </div>
         </nav>
     </header>
 
     <main>
         <div class="container">
             <form style="padding-top: 30px" ng-submit="cadastrarPonto(ponto)">
-                <h4 class="center teal-text light">Cadastrar Ponto</h4>
-                <br>
-                <div class="divider"></div>
+
                 <div class="row" style="padding-top: 20px">
                     <div class="input-field col s12">
-                        <!--<input placeholder="" ng-blur="initMap()" id="endereco" type="text" ng-model="ponto.endereco" class="validate">-->
                         <input placeholder="" ng-blur="initMap()" id="endereco" type="text" ng-model="ponto.endereco" class="validate" required>
                         <label for="endereco">Endereço</label>
                     </div>
@@ -132,6 +137,8 @@ $(".button-collapse").sideNav();
 
 <script>
     $(document).ready(function(){
+        $(".button-collapse").sideNav();
+        $('.button-collapse').sideNav('hide');
         $("#raioAlcance").focus();
         $("#endereco").focus();
         $('.datepicker').pickadate({
@@ -140,6 +147,5 @@ $(".button-collapse").sideNav();
            format: 'dd/mm/yyyy'
          });
         $('select').material_select();
-       angular.element(document.getElementById('divCadastrarPonto')).scope().initMap();
     });
 </script>

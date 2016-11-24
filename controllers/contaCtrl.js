@@ -1,11 +1,9 @@
 app.controller('contaCtrl', function ($scope, $location, $rootScope, ClienteService, EmpresaService) {
 
-    /*
-        if($rootScope.empresa.id < 1){
-            $location.path('login');
-            return;
-        }
-    */
+    if($rootScope.empresaAtiva.id < 1){
+        $location.path('login');
+        return;
+    }
 
     $scope.empresaAtiva = $rootScope.empresaAtiva;
 

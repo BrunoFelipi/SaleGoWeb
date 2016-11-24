@@ -1,5 +1,10 @@
 app.controller('cadastrarPontoCtrl', function ($scope, $rootScope, $route, $location, PontoService, $filter) {
 
+    if($rootScope.empresaAtiva.id < 1){
+        $location.path('login');
+        return;
+    }
+
     $scope.empresaAtiva = $rootScope.empresaAtiva;
 
     $scope.latitude = '-26.9086729';
@@ -70,4 +75,5 @@ app.controller('cadastrarPontoCtrl', function ($scope, $rootScope, $route, $loca
             }
         });
     }
+    $scope.initMap();
 });

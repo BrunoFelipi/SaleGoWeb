@@ -1,10 +1,9 @@
 app.controller('homeCtrl', function ($scope, $rootScope, $location, PontoService) {
-    /*
-        if($rootScope.empresaAtiva.id < 1){
-            $location.path('login');
-            return;
-        }
-    */
+    
+    if($rootScope.empresaAtiva.id < 1){
+        $location.path('login');
+        return;
+    }
 
     $scope.empresaAtiva = $rootScope.empresaAtiva;
     $scope.pontos = [];

@@ -1,42 +1,47 @@
 <style media="screen">
-header, main, footer {
-    padding-left: 300px;
-}
+    header, main, footer {
+        padding-left: 300px;
+    }
 
-#map {
-    height: 400px;
-    width: 100%;
-}
+    @media only screen and (max-width : 992px) {
+      header, main, footer {
+        padding-left: 0;
+      }
+    }
+
+    #map {
+        height: 400px;
+        width: 100%;
+    }
 </style>
 
 <div id="divHome" ng-controller="homeCtrl">
     
     <header>
-        <nav class="side-nav fixed grey lighten-4">
-            <ul>
+        <nav>
+            <ul id="sideNav" class="side-nav fixed">
                 <li>
                     <div class="userView">
                         <img class="background" src="resources/teal.jpg">
-                        <a href=""><img class="circle" src="resources/bk1.jpg"></a>
-                        <a href=""><span class="white-text name">{{empresaAtiva.nome}}</span></a>
-                        <a href=""><span class="white-text email">{{empresaAtiva.email}}</span></a>
+                        <a href="#/conta"><img class="circle" src="resources/bk1.jpg"></a>
+                        <a href="#/conta"><span class="white-text name">{{empresaAtiva.nome}}</span></a>
+                        <a href="#/conta"><span class="white-text email">{{empresaAtiva.email}}</span></a>
                     </div>
                 </li>
-
                 <li class="active">
-                    <a href="#/home" class="waves-effect"><i class="material-icons">home</i>Home</a>
+                    <a href="#/home" class="waves-effect" href=""><i class="material-icons">home</i>Home</a>
                 </li>
 
                 <li>
-                    <a href="#/cadastrarPonto" class="waves-effect"><i class="material-icons">add</i>Cadastrar Ponto</a>
+                    <a href="#/cadastrarPonto" class="waves-effect" href=""><i class="material-icons">add</i>Cadastrar Ponto</a>
                 </li>
 
                 <li>
-                    <a href="#/relatorio" class="waves-effect"><i class="material-icons">subject</i>Relatórios</a>
+                    <a href="#/relatorio" class="waves-effect" href=""><i class="material-icons">subject</i>Relatórios</a>
                 </li>
 
                 <li>
-                    <a href="#/conta" class="waves-effect"><i class="material-icons">settings</i>Conta</a>
+                    <a href="#/conta" class="waves-effect" href=""><i class="material-icons">settings</i>Conta</a>
                 </li>
 
                 <li>
@@ -44,9 +49,18 @@ header, main, footer {
                 </li>
 
                 <li>
-                    <a class="waves-effect" href="#/login"><i class="material-icons red-text">power_settings_new</i>Sair</a>
+                    <a href="#/login" class="waves-effect" href=""><i class="material-icons red-text">power_settings_new</i>Sair</a>
                 </li>
             </ul>
+
+            <div class="teal darken-1">
+                <div class="container">
+                    <div class="nav-wrapper">
+                        <a href="" data-activates="sideNav" class="button-collapse show-on-small"><i class="material-icons">menu</i></a>
+                        <a href="#" class="brand-logo center light">Home</a>
+                    </div>
+                </div>
+            </div>
         </nav>
     </header>
 
@@ -93,9 +107,10 @@ header, main, footer {
 
 <script>
 
-$(document).ready(function(){
-    $('.button-collapse').sideNav();
+$(document).ready(function(){    
     $('.collapsible').collapsible();
+    $(".button-collapse").sideNav();
+    $('.button-collapse').sideNav('hide');
 });
 
 

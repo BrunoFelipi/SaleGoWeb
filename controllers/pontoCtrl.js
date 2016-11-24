@@ -1,5 +1,10 @@
 app.controller('pontoCtrl', function($scope, $rootScope, $location, PontoService, $routeParams, $filter){
 
+    if($rootScope.empresaAtiva.id < 1){
+        $location.path('login');
+        return;
+    }
+
     $scope.ponto = [];
 
     var promise = PontoService.select($routeParams.id);

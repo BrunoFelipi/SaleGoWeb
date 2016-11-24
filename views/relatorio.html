@@ -1,31 +1,32 @@
-<script type="text/javascript">
-
-$(document).ready(function() {
-    $(".button-collapse").sideNav();
-});
-
-</script>
-
 <style media="screen">
-  header, main, footer {
-    padding-left: 300px;
-  }
+    header,
+    main,
+    footer {
+        padding-left: 300px;
+    }
+    
+    @media only screen and (max-width: 992px) {
+        header,
+        main,
+        footer {
+            padding-left: 0;
+        }
+    }
 </style>
 
 <div ng-controller="relatorioCtrl">
-    <!--
-    <header>
-        <nav class="side-nav fixed grey lighten-4">
-            <ul>
-                <li>
-                  <div class="userView">
-                    <img class="background" src="resources/teal.jpg">
-                    <a href="#/conta"><img class="circle" src="resources/bk1.jpg"></a>
-                    <a href="#/conta"><span class="white-text name">{{empresaAtiva.nome}}</span></a>
-                    <a href="#/conta"><span class="white-text email">{{empresaAtiva.email}}</span></a>
-                  </div>
-                </li>
 
+    <header>
+        <nav>
+            <ul id="sideNav" class="side-nav fixed">
+                <li>
+                    <div class="userView">
+                        <img class="background" src="resources/teal.jpg">
+                        <a href="#/conta"><img class="circle" src="resources/bk1.jpg"></a>
+                        <a href="#/conta"><span class="white-text name">{{empresaAtiva.nome}}</span></a>
+                        <a href="#/conta"><span class="white-text email">{{empresaAtiva.email}}</span></a>
+                    </div>
+                </li>
                 <li>
                     <a href="#/home" class="waves-effect" href=""><i class="material-icons">home</i>Home</a>
                 </li>
@@ -35,7 +36,7 @@ $(document).ready(function() {
                 </li>
 
                 <li class="active">
-                    <a href="" class="waves-effect" href=""><i class="material-icons">subject</i>Relatórios</a>
+                    <a href="#/relatorio" class="waves-effect" href=""><i class="material-icons">subject</i>Relatórios</a>
                 </li>
 
                 <li>
@@ -50,9 +51,18 @@ $(document).ready(function() {
                     <a href="#/login" class="waves-effect" href=""><i class="material-icons red-text">power_settings_new</i>Sair</a>
                 </li>
             </ul>
+
+            <div class="teal darken-1">
+                <div class="container">
+                    <div class="nav-wrapper">
+                        <a href="" data-activates="sideNav" class="button-collapse show-on-small"><i class="material-icons">menu</i></a>
+                        <a href="#" class="brand-logo center light">Relatório</a>
+                    </div>
+                </div>
+            </div>
         </nav>
     </header>
--->
+
     <main>
         <form name="formulario">
             <div class="container" style="padding-top: 50px">
@@ -94,3 +104,12 @@ $(document).ready(function() {
     </footer>
 
 </div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $(".button-collapse").sideNav();            
+    $('.button-collapse').sideNav('hide');
+});
+
+</script>
