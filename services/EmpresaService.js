@@ -4,7 +4,7 @@ app.factory('EmpresaService', function($http, $rootScope, $location){
         validarSenha: function(email, senha){
             return $http({
                 method: 'get',
-                url: 'ws/usuario/validarSenha.php',
+                url: 'ws/empresa/validarSenha.php',
                 params: {email: email, senha: senha}
             });
         },
@@ -46,7 +46,7 @@ app.factory('EmpresaService', function($http, $rootScope, $location){
         alterarSenha: function(email, senha){
             return $http({
                 method: 'post',
-                url: 'ws/usuario/alterarSenha.php',
+                url: 'ws/empresa/alterarSenha.php',
                 data: {email: email, senha: senha}
             });
         },

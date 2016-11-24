@@ -1,4 +1,4 @@
-app.controller('esqueceuSenhaCtrl', function($scope, UsuarioService, toastr, $location){
+app.controller('esqueceuSenhaCtrl', function($scope, EmpresaService, toastr, $location){
 
     if($rootScope.empresa.id < 1){
         $location.path('login');
@@ -7,7 +7,7 @@ app.controller('esqueceuSenhaCtrl', function($scope, UsuarioService, toastr, $lo
 
     $scope.enviarEmail = function(){
 
-        var promise = UsuarioService.enviarEmailEsqueceuSenha($scope.email);
+        var promise = EmpresaService.enviarEmailEsqueceuSenha($scope.email);
 
         promise.then(function(response){
             if(response.data == 'true'){

@@ -9,7 +9,7 @@ app.controller('homeCtrl', function ($scope, $rootScope, $location, PontoService
     $scope.empresaAtiva = $rootScope.empresaAtiva;
     $scope.pontos = [];
 
-    var promise = PontoService.selectAll(0);
+    var promise = PontoService.selectAll($scope.empresaAtiva.id);
     promise.then(function (response) {
         $scope.pontos = response.data;
     }, function (error) {
@@ -40,9 +40,9 @@ app.controller('homeCtrl', function ($scope, $rootScope, $location, PontoService
             scrollwheel: true,
             zoom: 13
         });
-        
+
         for (var ponto in $scope.pontos) {
-            // Add the circle for this city to the map.            
+            // Add the circle for this city to the map.
             var centro = new google.maps.LatLng(parseFloat($scope.pontos[ponto].latitude),parseFloat($scope.pontos[ponto].longitude));
             var cityCircle = new google.maps.Circle({
                 title: 'Uluru (Ayers Rock)',

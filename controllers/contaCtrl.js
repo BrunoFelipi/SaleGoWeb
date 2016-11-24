@@ -1,9 +1,11 @@
 app.controller('contaCtrl', function($scope, $location, $rootScope, ClienteService, EmpresaService){
 
+/*
     if($rootScope.empresa.id < 1){
         $location.path('login');
         return;
     }
+*/
 
     $scope.empresaAtiva = $rootScope.empresaAtiva;
 
@@ -17,8 +19,8 @@ app.controller('contaCtrl', function($scope, $location, $rootScope, ClienteServi
             Materialize.toast('Senhas não conferem', 4000);
         } else {
 
-            var validarSenha = UsuarioService.validarSenha($scope.email, $scope.senhaAtu);
-            var alterarSenha = UsuarioService.alterarSenha($scope.email, $scope.novaSen);
+            var validarSenha = EmpresaService.validarSenha($scope.email, $scope.senhaAtu);
+            var alterarSenha = EmpresaService.alterarSenha($scope.email, $scope.novaSen);
 
             validarSenha.then(function(response){
 
