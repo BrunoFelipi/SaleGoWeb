@@ -3,9 +3,16 @@ app.factory('EmpresaService', function($http, $rootScope, $location){
 
         validarSenha: function(email, senha){
             return $http({
-                method: 'get',
+                method: 'post',
                 url: 'ws/empresa/validarSenha.php',
-                params: {email: email, senha: senha}
+                data: {email: email, senha: senha}
+            });
+        },
+        alterarSenha: function(email, senha){
+            return $http({
+                method: 'post',
+                url: 'ws/empresa/alterarSenha.php',
+                data: {email: email, senha: senha}
             });
         },
         select: function(email){
@@ -22,13 +29,7 @@ app.factory('EmpresaService', function($http, $rootScope, $location){
               data: {email: email, senha: senha}
           });
         },
-        alterarSenha: function(email, senha){
-            return $http({
-                method: 'post',
-                url: 'ws/empresa/alterarSenha.php',
-                data: {email: email, senha: senha}
-            });
-        },
+        
         enviarEmailEsqueceuSenha: function(empresa){
             return $http({
                 method: 'post',
