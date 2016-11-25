@@ -97,7 +97,7 @@
                             <td class="center">
                                 <div class="switch">
                                     <label>                                        
-                                        <input ng-checked="ponto.ativo == 's'" ng-true-value="'s'" ng-false-value="'n'" ng-model="pontoAtivo" ng-click="ativar(ponto.id, pontoAtivo)" type="checkbox">
+                                        <input type="checkbox" ng-true-value="'s'" ng-false-value="'n'" ng-checked="ponto.ativo == 's'" ng-model="pontoAtivo" ng-click="ativar(ponto.id, pontoAtivo)">
                                         <span class="lever"></span>                                        
                                     </label>
                                 </div>                                
@@ -118,9 +118,9 @@
 
 <script>
 
-$(document).ready(function(){
+$(document).ready(function(){    
     $('.collapsible').collapsible();
-    $(".button-collapse").sideNav();
+    $('.button-collapse').sideNav();
     $('.button-collapse').sideNav('hide');
 });
 
