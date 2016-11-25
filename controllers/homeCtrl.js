@@ -5,13 +5,9 @@ app.controller('homeCtrl', function ($scope, $rootScope, $location, PontoService
         return;
     }
     */
-
-    $scope.oi = function (oi) {
-        alert(oi);
-    }
-
     $scope.empresaAtiva = $rootScope.empresaAtiva;
     $scope.pontos = [];
+    $scope.pontosMap = [];
 
     var promise = PontoService.updatePontosVencidos($scope.empresaAtiva.id);
     promise.then(function (response) {
@@ -23,7 +19,18 @@ app.controller('homeCtrl', function ($scope, $rootScope, $location, PontoService
         var promise = PontoService.selectAll($scope.empresaAtiva.id);
         promise.then(function (response) {
             $scope.pontos = response.data;
-            $scope.initMap();
+
+            var promise = PontoService.selectMap(idPonto);
+            promise.then(function (response) {
+
+                if (response.data == 'true') {
+                    $scope.pontosMap = response.data;
+                    $scope.initMap();
+                }
+
+            }, function (error) {
+                Materialize.toast('Erro de conexão com o banco', 4000);
+            });
         }, function (error) {
             Materialize.toast('Erro de conexão com o banco', 4000);
         });
@@ -37,21 +44,66 @@ app.controller('homeCtrl', function ($scope, $rootScope, $location, PontoService
 
     $scope.ativar = function (idPonto, pontoAtivo) {
 
-        var promise = PontoService.ativar(pontoAtivo, idPonto);
-        promise.then(function (response) {
-            if (response.data == 'true') {
+        if (pontoAtivo == 's') {
 
-                var promise = PontoService.selectAll($scope.empresaAtiva.id);
-                promise.then(function (response) {
-                    $scope.pontos = response.data;
-                    $scope.initMap();
-                }, function (error) {
-                    Materialize.toast('Erro de conexão com o banco', 4000);
-                });
-            }
-        }, function (error) {
-            Materialize.toast('Erro de conexão com o banco', 4000);
-        });
+            var promise = PontoService.ativar(idPonto);
+            promise.then(function (response) {
+
+                if (response.data == 'true') {
+                    var promise = PontoService.selectAll($scope.empresaAtiva.id);
+                    promise.then(function (response) {
+                        $scope.pontos = response.data;
+
+                        var promise = PontoService.selectMap(idPonto);
+                        promise.then(function (response) {
+
+                            if (response.data == 'true') {
+                                $scope.pontosMap = response.data;
+                                $scope.initMap();
+                            }
+
+                        }, function (error) {
+                            Materialize.toast('Erro de conexão com o banco', 4000);
+                        });
+                    }, function (error) {
+                        Materialize.toast('Erro de conexão com o banco', 4000);
+                    });
+                }
+            }, function (error) {
+                Materialize.toast('Erro de conexão com o banco', 4000);
+            });
+
+        } else if (pontoAtivo == 'n') {
+
+            var promise = PontoService.desativar(idPonto);
+            promise.then(function (response) {
+
+                if (response.data == 'true') {
+                    var promise = PontoService.selectAll($scope.empresaAtiva.id);
+                    promise.then(function (response) {
+                        $scope.pontos = response.data;
+
+                        var promise = PontoService.selectMap(idPonto);
+                        promise.then(function (response) {
+
+                            if (response.data == 'true') {
+                                $scope.pontosMap = response.data;
+                                $scope.initMap();
+                            }
+
+                        }, function (error) {
+                            Materialize.toast('Erro de conexão com o banco', 4000);
+                        });
+
+                    }, function (error) {
+                        Materialize.toast('Erro de conexão com o banco', 4000);
+                    });
+                }
+            }, function (error) {
+                Materialize.toast('Erro de conexão com o banco', 4000);
+            });
+
+        }
 
     }
 
@@ -66,11 +118,11 @@ app.controller('homeCtrl', function ($scope, $rootScope, $location, PontoService
             zoom: 13
         });
 
-        for (var ponto in $scope.pontos) {
+        for (var ponto in $scope.pontosMap) {
 
-            if ($scope.pontos[ponto].ativo == 's') {
+            if ($scope.pontosMap[ponto].ativo == 's') {
                 // Add the circle for this city to the map.
-                var centro = new google.maps.LatLng(parseFloat($scope.pontos[ponto].latitude), parseFloat($scope.pontos[ponto].longitude));
+                var centro = new google.maps.LatLng(parseFloat($scope.pontosMap[ponto].latitude), parseFloat($scope.pontosMap[ponto].longitude));
                 var cityCircle = new google.maps.Circle({
                     title: 'Uluru (Ayers Rock)',
                     strokeColor: '#FF0000',
@@ -80,7 +132,7 @@ app.controller('homeCtrl', function ($scope, $rootScope, $location, PontoService
                     fillOpacity: 0.35,
                     map: map,
                     center: centro,
-                    radius: Math.sqrt($scope.pontos[ponto].raioAlcance * 1000)
+                    radius: Math.sqrt($scope.pontosMap[ponto].raioAlcance * 1000)
                 });
             }
         }

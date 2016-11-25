@@ -4,7 +4,7 @@
 
     $idPonto = $data['idPonto'];
 
-    $sql = "UPDATE ponto SET ativo='s' WHERE id = '$idPonto'";
+    $sql = "UPDATE ponto SET ativo='n' WHERE id = '$idPonto'";
 
     if(mysqli_query($conexao, $sql)){
         print "true";

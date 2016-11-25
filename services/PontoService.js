@@ -14,11 +14,25 @@ app.factory('PontoService', function($http, $rootScope, $location){
                 data: {idPonto: idPonto}
             });
         },
-        ativar: function(valor, idPonto){
+        selectMap: function(idPonto){
+            return $http({
+                method: 'post',
+                url: 'ws/ponto/select.php',
+                data: {idPonto: idPonto}
+            });
+        },
+        ativar: function(idPonto){
             return $http({
                 method: 'post',
                 url: 'ws/ponto/ativar.php',
-                data: {valor: valor, idPonto: idPonto}
+                data: {idPonto: idPonto}
+            });
+        },
+        desativar: function(idPonto){
+            return $http({
+                method: 'post',
+                url: 'ws/ponto/desativar.php',
+                data: {idPonto: idPonto}
             });
         },
         updatePontosVencidos: function(idEmpresa){
