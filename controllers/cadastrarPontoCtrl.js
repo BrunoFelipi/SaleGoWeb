@@ -1,6 +1,6 @@
 app.controller('cadastrarPontoCtrl', function ($scope, $rootScope, $route, $location, PontoService, $filter) {
 
-    if($rootScope.empresaAtiva.id < 1){
+    if ($rootScope.empresaAtiva.id < 1) {
         $location.path('login');
         return;
     }
@@ -12,29 +12,29 @@ app.controller('cadastrarPontoCtrl', function ($scope, $rootScope, $route, $loca
     $scope.dataAtual = $filter('date')(new Date(), 'dd/MM/yyyy');
 
     $scope.cadastrarPonto = function (ponto) {
-
-        if (ponto.tipoDesconto == null) {
+        $scope.ponto = ponto;
+        if ($scope.ponto.tipoDesconto == null) {
             Materialize.toast('Selecione um tipo', 4000);
             return;
         }
 
-        if (ponto.dataValidade == null) {
+        if ($scope.ponto.dataValidade == null) {
             Materialize.toast('Necessário preencher<br>Data de Validade', 4000);
             return;
         }
 
-        if ($scope.dataAtual > ponto.dataValidade) {
+        if ($scope.dataAtual > $scope.ponto.dataValidade) {
             Materialize.toast('Data informada é menor<br>que a data atual', 4000);
             return;
         }
 
-        var promise = PontoService.insert($scope.empresaAtiva.id, $scope.latitude, $scope.longitude, ponto);
+        var promise = PontoService.insert($scope.empresaAtiva.id, $scope.latitude, $scope.longitude, $scope.ponto);
         promise.then(function (response) {
             if (response.data == 'true') {
                 $route.reload();
                 Materialize.toast('Ponto cadastrado com sucesso', 2000);
             } else {
-                Materialize.toast('Erro ao cadastrar ponto', 2000);
+                Materialize.toast('Erro ao cadastrar $scope.ponto', 2000);
             }
         }, function (error) {
             Materialize.toast('Erro de conexão com o banco', 4000);
@@ -45,6 +45,13 @@ app.controller('cadastrarPontoCtrl', function ($scope, $rootScope, $route, $loca
         $route.reload();
     }
 
+    // Create a marker and set its position.
+    var marker = new google.maps.Marker({
+        map: map,
+        draggable: true,
+    });
+    var geocoder = new google.maps.Geocoder();
+
     $scope.initMap = function () {
 
         // Create a map object and specify the DOM element for display.
@@ -52,14 +59,6 @@ app.controller('cadastrarPontoCtrl', function ($scope, $rootScope, $route, $loca
             center: new google.maps.LatLng($scope.latitude, $scope.longitude),
             scrollwheel: true,
             zoom: 12
-        });
-
-        geocoder = new google.maps.Geocoder();
-
-        // Create a marker and set its position.
-        var marker = new google.maps.Marker({
-            map: map,
-            draggable: true,
         });
 
         geocoder.geocode({ 'address': document.getElementById('endereco').value, 'region': 'BR' }, function (results, status) {
@@ -75,5 +74,28 @@ app.controller('cadastrarPontoCtrl', function ($scope, $rootScope, $route, $loca
             }
         });
     }
+    function updateInputAddress(str) {
+        document.getElementById('endereco').value = str;
+    }
+
+    function geocodePosition(pos) {
+        geocoder.geocode({
+            'latLng': pos
+        }, function (responses) {
+            if (responses && responses.length > 0) {
+                updateInputAddress(responses[0].formatted_address);
+            }
+        });
+    }
+
+    geocodePosition(marker.getPosition());
+
+    // Add dragging event listeners.
+
+    google.maps.event.addListener(marker, 'dragend', function () {
+        // updateMarkerStatus('Drag ended');
+        geocodePosition(marker.getPosition());
+    });
+
     $scope.initMap();
 });
