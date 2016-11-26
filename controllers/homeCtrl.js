@@ -103,7 +103,7 @@ app.controller('homeCtrl', function($scope, $rootScope, $location, PontoService)
                     center: centro,
                     radius: Math.sqrt($scope.pontos[ponto].raioAlcance * 1000)
                 });
-                var content = $scope.pontos[ponto].endereco;
+                var content = "<html>" + $scope.pontos[ponto].descricao + '</html>';
                 infowindow = new google.maps.InfoWindow();
                 google.maps.event.addListener(cityCircle, 'click', (function(cityCircle, content, infoWindow) {
                     return function(){
