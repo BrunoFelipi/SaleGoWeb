@@ -45,20 +45,23 @@ app.controller('cadastrarPontoCtrl', function ($scope, $rootScope, $route, $loca
         $route.reload();
     }
 
-    // Create a marker and set its position.
-    var marker = new google.maps.Marker({
-        map: map,
-        draggable: true,
-    });
-    var geocoder = new google.maps.Geocoder();
+
 
     $scope.initMap = function () {
+
+        var geocoder = new google.maps.Geocoder();
 
         // Create a map object and specify the DOM element for display.
         var map = new google.maps.Map(document.getElementById('map'), {
             center: new google.maps.LatLng($scope.latitude, $scope.longitude),
             scrollwheel: true,
             zoom: 12
+        });
+
+        // Create a marker and set its position.
+        var marker = new google.maps.Marker({
+            map: map,
+            draggable: true,
         });
 
         geocoder.geocode({ 'address': document.getElementById('endereco').value, 'region': 'BR' }, function (results, status) {
@@ -73,29 +76,27 @@ app.controller('cadastrarPontoCtrl', function ($scope, $rootScope, $route, $loca
                 }
             }
         });
-    }
-    function updateInputAddress(str) {
-        document.getElementById('endereco').value = str;
-    }
 
-    function geocodePosition(pos) {
-        geocoder.geocode({
-            'latLng': pos
-        }, function (responses) {
-            if (responses && responses.length > 0) {
-                updateInputAddress(responses[0].formatted_address);
-            }
+        function updateInputAddress(str) {
+            document.getElementById('endereco').value = str;
+        }
+
+        function geocodePosition(pos) {
+            geocoder.geocode({
+                'latLng': pos
+            }, function (responses) {
+                if (responses && responses.length > 0) {
+                    updateInputAddress(responses[0].formatted_address);
+                }
+            });
+        }
+
+        google.maps.event.addListener(marker, 'dragend', function () {
+            geocodePosition(marker.getPosition());
         });
     }
 
-    geocodePosition(marker.getPosition());
-
-    // Add dragging event listeners.
-
-    google.maps.event.addListener(marker, 'dragend', function () {
-        // updateMarkerStatus('Drag ended');
-        geocodePosition(marker.getPosition());
-    });
-
     $scope.initMap();
+
+
 });
