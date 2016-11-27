@@ -1,15 +1,18 @@
 <style media="screen">
-
-    header, main, footer {
+    header,
+    main,
+    footer {
         padding-left: 300px;
     }
-
-    @media only screen and (max-width : 992px) {
-      header, main, footer {
-        padding-left: 0;
-      }
+    
+    @media only screen and (max-width: 992px) {
+        header,
+        main,
+        footer {
+            padding-left: 0;
+        }
     }
-
+    
     #map {
         height: 400px;
         width: 100%;
@@ -72,7 +75,6 @@
 
         <div class="container">
             <div class="row">
-
                 <table class="responsive-table striped">
                     <thead>
                         <tr>
@@ -82,19 +84,46 @@
                             <th class="center" data-field="tipoDesconto">Tipo Desconto</th>
                             <th class="center" data-field="valor">Valor</th>
                             <th class="center" data-field="ativo">Ativo</th>
-                            <th class="center" data-field="clientes">Clientes</th>
+                            <th class="center" data-field="dataVencimento">Data de Vencimento</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <tr ng-repeat="p in ponto">
-                            <td class="center">{{p.endereco}}</td>
-                            <td class="center">{{p.descricao}}</td>
-                            <td class="center">{{p.raioAlcance}}</td>
-                            <td class="center">{{p.tipoDesconto}}</td>
-                            <td class="center">{{p.valor}}</td>
-                            <td class="center">{{p.ativo}}</td>
-                            <td class="center">{{p.qtdClientes}}</td>
+                        <tr>
+                            <td class="center">{{ponto.endereco}}</td>
+                            <td class="center">{{ponto.descricao}}</td>
+                            <td class="center">{{ponto.raioAlcance}}</td>
+                            <td class="center">{{ponto.tipoDesconto}}</td>
+                            <td class="center">{{ponto.valor}}</td>
+                            <td class="center">
+                                <div class="switch">
+                                    <label>                                        
+                                        <input type="checkbox" disabled ng-checked="ponto.ativo == 's'">
+                                        <span class="lever"></span>                                        
+                                    </label>
+                                </div>
+                            </td>
+                            <td class="center">{{ponto.dataVencimento}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row">
+                <table class="responsive-table striped">
+                    <thead>
+                        <tr>
+                            <th class="center" data-field="endereco">Nome</th>
+                            <th class="center" data-field="descricao">CPF</th>
+                            <th class="center" data-field="raioAlcance">Email</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr ng-repeat="u in usuarios">
+                            <td class="center">{{u.nome}}</td>
+                            <td class="center">{{u.cpf}}</td>
+                            <td class="center">{{u.email}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -112,26 +141,7 @@
 $(document).ready(function(){
     $('.button-collapse').sideNav();
     $('.collapsible').collapsible();
-    $('.button-collapse').sideNav('hide');
-    initMap();
+    $('.button-collapse').sideNav('hide');   
 });
-
-function initMap(){
-    var myLatLng = {lat: -26.9166207, lng: -49.0717429};
-
-    // Create a map object and specify the DOM element for display.
-    var map = new google.maps.Map(document.getElementById('map'), {
-        center: myLatLng,
-        scrollwheel: false,
-        zoom: 18
-    });
-
-    // Create a marker and set its position.
-    var marker = new google.maps.Marker({
-        map: map,
-        position: myLatLng,
-        title: 'Hello World!'
-    });
-}
 
 </script>

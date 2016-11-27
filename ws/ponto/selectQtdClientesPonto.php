@@ -2,9 +2,9 @@
 include '../conexao.php';
 $data = json_decode(file_get_contents('php://input'), true);
 
-$idEmpresa = $data['idEmpresa'];
+$idPonto = $data['idPonto'];
 
-$sql = "SELECT * FROM ponto where idEmpresa='$idEmpresa' AND ativo='s'";
+$sql = "SELECT COUNT(idPonto) as qtdIdPonto FROM pontospegos where idPonto='$idPonto'";
 
 $rs = mysqli_query($conexao, $sql);
 

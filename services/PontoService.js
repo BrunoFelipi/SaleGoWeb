@@ -14,6 +14,34 @@ app.factory('PontoService', function($http, $rootScope, $location){
                 data: {idPonto: idPonto}
             });
         },
+        selectQtdClientes: function(idPonto){
+            return $http({
+                method: 'post',
+                url: 'ws/ponto/select.php',
+                data: {idPonto: idPonto}
+            });
+        },
+        getQtdClientesPonto: function(idPonto){
+            return $http({
+                method: 'post',
+                url: 'ws/ponto/selectQtdClientesPonto.php',
+                data: {idPonto: idPonto}
+            });
+        },        
+        updateQtdClientesPonto: function(idPonto, qtdClientes){
+            return $http({
+                method: 'post',
+                url: 'ws/ponto/updatePontoSetQtdCliente.php',
+                data: {idPonto: idPonto, qtdClientes: qtdClientes}
+            });
+        },        
+        selectUsuariosPonto: function(idPonto, idEmpresa){
+            return $http({
+                method: 'post',
+                url: 'ws/ponto/selectUsuariosPonto.php',
+                data: {idPonto: idPonto, idEmpresa: idEmpresa}
+            });
+        },
         selectMap: function(idPonto){
             return $http({
                 method: 'post',

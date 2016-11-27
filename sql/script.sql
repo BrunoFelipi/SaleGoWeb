@@ -34,6 +34,7 @@ insert into ponto values (0, 0, 'Rua general osorio, 1525, blumenau', '-26.91403
 create table pontosPegos(
   id int (8) primary key auto_increment,
   idPonto int(8),
+  idEmpresa int(8),
   idCliente int(8),
   dia datetime
 );
