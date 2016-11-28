@@ -24,4 +24,7 @@ app.config(function($routeProvider){
     .when('/ponto/:id', {
         templateUrl: 'views/ponto.html'
     })
+    .when('/relatorio/cliente/:id', {
+        templateUrl: 'views/cliente.html'
+    })
 });

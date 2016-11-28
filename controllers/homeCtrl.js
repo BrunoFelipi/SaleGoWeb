@@ -18,12 +18,17 @@ app.controller('homeCtrl', function ($scope, $rootScope, $location, $route, Pont
         var promise = PontoService.selectAll($scope.empresaAtiva.id);
         promise.then(function (response) {
             $scope.pontos = response.data;
-
+            
+            if(Object.keys($scope.pontos).length == 0){            
+                $scope.initMap();
+                return;
+            }
+            
             for (var i = 0; i < $scope.pontos.length; i++) {               
                 $scope.idPonto = $scope.pontos[i].id;
                 $scope.getQtdClientesPonto($scope.idPonto);
             }
-
+            
         }, function (error) {
             Materialize.toast('Erro de conexão com o banco', 4000);
         });

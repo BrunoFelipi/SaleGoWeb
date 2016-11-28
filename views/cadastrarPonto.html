@@ -82,20 +82,24 @@ $(".button-collapse").sideNav();
                         <label for="endereco">Endereço</label>
                     </div>
                 </div>
+
+                <div id="map"></div>
+                <br>
                 <div class="row">
                     <div class="input-field col s12">
                         <textarea id="descricao" ng-model="ponto.descricao" class="materialize-textarea" required></textarea>
                         <label for="descricao">Descrição</label>
                     </div>
+                </div>
 
+                <div class="row">
                     <div class="input-field col s12">
                         <input id="raioAlcance" ng-model="ponto.raioAlcance" type="number" class="validate" min="0" max="30" required>
                         <label for="descricao">Raio de Alcance (Km)</label>
                     </div>
-
                 </div>
 
-                <div class="row" style="padding-top: 20px">
+                <div class="row">
                     <div class="input-field col s12">
                         <input placeholder="" id="valor" ng-model="ponto.valor" type="number" class="validate" required>
                         <label for="valor">Valor</label>
@@ -113,13 +117,11 @@ $(".button-collapse").sideNav();
                     </div>
                 </div>
 
-                <!-- Data -->
                 <div class="input-field">
                     <input type="text" class="datepicker" id="dataValidade" ng-model="ponto.dataValidade">
                     <label>Data de Validade</label>
                 </div>
 
-                <div id="map"></div>
                 <br>
                 <div class="divider"></div>
                 <br>

@@ -113,17 +113,19 @@
                 <table class="responsive-table striped">
                     <thead>
                         <tr>
-                            <th class="center" data-field="endereco">Nome</th>
-                            <th class="center" data-field="descricao">CPF</th>
-                            <th class="center" data-field="raioAlcance">Email</th>
+                            <th class="center" data-field="nome">Nome</th>
+                            <th class="center" data-field="cpf">CPF</th>
+                            <th class="center" data-field="email">Email</th>
+                            <th class="center" data-field="data">Data</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <tr ng-repeat="u in usuarios">
-                            <td class="center">{{u.nome}}</td>
-                            <td class="center">{{u.cpf}}</td>
-                            <td class="center">{{u.email}}</td>
+                        <tr ng-repeat="cliente in clientes">
+                            <td class="center">{{cliente.nome}}</td>
+                            <td class="center">{{cliente.cpf}}</td>
+                            <td class="center">{{cliente.email}}</td>
+                            <td class="center">{{cliente.dia}}</td>
                         </tr>
                     </tbody>
                 </table>
