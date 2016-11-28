@@ -102,8 +102,8 @@
                                 <td class="center">{{ponto.tipoDesconto}}</td>
                                 <td class="center">{{ponto.valor}}</td>
                                 <td class="center">{{ponto.dataVencimento}}</td>
-                                <td><a class="tooltipped" ng-if="!existInCarrinho(ponto.id)" data-position="bottom" data-tooltip="Adicionar no carrinho" href="" ng-click="addCarrinhoPontos(ponto.id)"><img src="resources/addCarrinho.png" height="26" width="26"></a></td>
-                                <td><a class="tooltipped"  ng-if="existInCarrinho(ponto.id)" data-position="bottom" data-tooltip="Remover do carrinho" href="" ng-click="remCarrinhoPontos(ponto.id)"><img src="resources/remCarrinho.png" height="26" width="26"></a></td>
+                                <td><a class="tooltipped" ng-if="!existInCarrinho(ponto.idPonto)" data-position="bottom" data-tooltip="Adicionar no carrinho" href="" ng-click="addCarrinhoPontos(ponto.idPonto)"><img src="resources/addCarrinho.png" height="26" width="26"></a></td>
+                                <td><a class="tooltipped"  ng-if="existInCarrinho(ponto.idPonto)" data-position="bottom" data-tooltip="Remover do carrinho  " href="" ng-click="remCarrinhoPontos(ponto.idPonto)"><img src="resources/remCarrinho.png" height="26" width="26"></a></td>
                             </tr>
                         </tbody>
                     </table>
