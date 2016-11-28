@@ -4,7 +4,7 @@
     footer {
         padding-left: 300px;
     }
-
+    
     @media only screen and (max-width: 992px) {
         header,
         main,
@@ -36,7 +36,7 @@
                 </li>
 
                 <li class="active">
-                    <a href="#/relatorio" class="waves-effect" href=""><i class="material-icons">subject</i>Relatórios</a>
+                    <a href="#/relatorio" ng-click="reloadView()" class="waves-effect" href=""><i class="material-icons">subject</i>Relatórios</a>
                 </li>
 
                 <li>
@@ -56,7 +56,7 @@
                 <div class="container">
                     <div class="nav-wrapper">
                         <a href="" data-activates="sideNav" class="button-collapse show-on-small"><i class="material-icons">menu</i></a>
-                        <a href="#" class="brand-logo center light">Relatório</a>
+                        <a href="" class="brand-logo center light">Relatório</a>
                     </div>
                 </div>
             </div>
@@ -67,30 +67,28 @@
         <form name="formulario">
             <div class="container" style="padding-top: 50px">
                 <div class="row">
+                    <div class="col s6 m6 l6 ">
+                        <div class="input-field">
+                            <input id="pesquisa" ng-model="pesquisa" placeholder="Nome, CPF, Email" type="text" class="validate">
+                            <label for="pesquisa">Pesquisar</label>
+                        </div>
+                    </div>
                     <table class="responsive-table striped">
                         <thead>
                             <tr>
-                                <th data-field="id">Name</th>
-                                <th data-field="name">Item Name</th>
-                                <th data-field="price">Item Price</th>
+                                <th class="center" data-field="nome">id</th>
+                                <th class="center" data-field="cpf">idCliente</th>
+                                <th class="center" data-field="email">idEmpresa</th>
+                                <th class="center" data-field="email">idPonto</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>Alvin</td>
-                                <td>Eclair</td>
-                                <td>$0.87</td>
-                            </tr>
-                            <tr>
-                                <td>Alan</td>
-                                <td>Jellybean</td>
-                                <td>$3.76</td>
-                            </tr>
-                            <tr>
-                                <td>Jonathan</td>
-                                <td>Lollipop</td>
-                                <td>$7.00</td>
+                            <tr ng-repeat="c in clientes | filter: pesquisa">
+                                <td class="center">{{c.id}}</td>
+                                <td class="center">{{c.idCliente}}</td>
+                                <td class="center">{{c.idEmpresa}}</td>
+                                <td class="center">{{c.idPonto}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -110,6 +108,7 @@
 $(document).ready(function() {
     $(".button-collapse").sideNav();
     $('.button-collapse').sideNav('hide');
+    $('#pesquisa').focus();
 });
 
 </script>

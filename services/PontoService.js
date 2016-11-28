@@ -42,13 +42,6 @@ app.factory('PontoService', function($http, $rootScope, $location){
                 data: {idPonto: idPonto, idEmpresa: idEmpresa}
             });
         },
-        selectMap: function(idPonto){
-            return $http({
-                method: 'post',
-                url: 'ws/ponto/select.php',
-                data: {idPonto: idPonto}
-            });
-        },
         ativar: function(idPonto){
             return $http({
                 method: 'post',

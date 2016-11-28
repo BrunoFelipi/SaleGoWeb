@@ -1,11 +1,15 @@
-app.controller('contaCtrl', function ($scope, $location, $rootScope, ClienteService, EmpresaService) {
+app.controller('contaCtrl', function ($scope, $location, $rootScope, $route, ClienteService, EmpresaService) {
 
-    if($rootScope.empresaAtiva.id < 1){
+    if($rootScope.empresaAtiva.id < 1 || $rootScope.empresaAtiva.id == undefined){
         $location.path('login');
         return;
     }
 
     $scope.empresaAtiva = $rootScope.empresaAtiva;
+
+    $scope.reloadView = function(){
+        $route.reload();
+    }
 
     $scope.closeModal = function () {
         $('#modalAlterarSenha').closeModal();

@@ -1,10 +1,10 @@
-app.controller('homeCtrl', function ($scope, $rootScope, $location, PontoService) {
-    /*
-    if($rootScope.empresaAtiva.id < 1){
+app.controller('homeCtrl', function ($scope, $rootScope, $location, $route, PontoService) {
+
+    if($rootScope.empresaAtiva.id < 1 || $rootScope.empresaAtiva.id == undefined){
         $location.path('login');
         return;
     }
-    */
+    
     $scope.empresaAtiva = $rootScope.empresaAtiva;
     $scope.pontos = [];
 
@@ -19,32 +19,10 @@ app.controller('homeCtrl', function ($scope, $rootScope, $location, PontoService
         promise.then(function (response) {
             $scope.pontos = response.data;
 
-            for (var i = 0; i < $scope.pontos.length; i++) {
-
+            for (var i = 0; i < $scope.pontos.length; i++) {               
                 $scope.idPonto = $scope.pontos[i].id;
-                var promise = PontoService.getQtdClientesPonto($scope.idPonto);
-                promise.then(function (response) {
-                    console.log(response.data);
-                    var promise = PontoService.updateQtdClientesPonto($scope.idPonto, response.data[0].qtdIdPonto);
-                    promise.then(function (response) {
-                        
-                    }, function (error) {
-                        Materialize.toast('Erro de conexão com o banco', 4000);
-                    });
-
-                }, function (error) {
-                    Materialize.toast('Erro de conexão com o banco', 4000);
-                });
+                $scope.getQtdClientesPonto($scope.idPonto);
             }
-
-            var promise = PontoService.selectAll($scope.empresaAtiva.id);
-            promise.then(function (response) {
-                $scope.pontos = response.data;
-                console.log($scope.pontos);
-                $scope.initMap();
-            }, function (error) {
-                Materialize.toast('Erro de conexão com o banco', 4000);
-            });
 
         }, function (error) {
             Materialize.toast('Erro de conexão com o banco', 4000);
@@ -52,6 +30,36 @@ app.controller('homeCtrl', function ($scope, $rootScope, $location, PontoService
     }, function (error) {
         Materialize.toast('Erro de conexão com o banco', 4000);
     });
+
+    $scope.getQtdClientesPonto = function (idPonto) {
+        var promise = PontoService.getQtdClientesPonto(idPonto);
+        promise.then(function (response) {            
+            $scope.updateQtdClientesPonto(idPonto, response.data[0].qtdIdPonto);
+        }, function (error) {
+            Materialize.toast('Erro de conexão com o banco', 4000);
+        });
+    }
+
+    $scope.updateQtdClientesPonto = function (idPonto, qtdPonto) {
+        var promise = PontoService.updateQtdClientesPonto(idPonto, qtdPonto);
+        promise.then(function (response) {
+
+            if (response.data == 'true') {
+                var promise = PontoService.selectAll($scope.empresaAtiva.id);
+                promise.then(function (response) {
+                    $scope.pontos = response.data;
+                    $scope.initMap();
+                }, function (error) {
+                    Materialize.toast('Erro de conexão com o banco', 4000);
+                });
+            } else {
+                $scope.initMap();
+            }
+
+        }, function (error) {
+            Materialize.toast('Erro de conexão com o banco', 4000);
+        });
+    }
 
     $scope.viewClienteGetPonto = function (idPonto) {
         $location.path('ponto/' + idPonto);
@@ -141,4 +149,9 @@ app.controller('homeCtrl', function ($scope, $rootScope, $location, PontoService
             }
         }
     }
+
+    $scope.reloadView = function(){
+        $route.reload();
+    }
+
 });

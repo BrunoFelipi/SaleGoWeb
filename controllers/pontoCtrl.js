@@ -1,6 +1,6 @@
 app.controller('pontoCtrl', function ($scope, $rootScope, $location, PontoService, $routeParams, $filter) {
 
-    if ($rootScope.empresaAtiva.id < 1) {
+    if ($rootScope.empresaAtiva.id < 1 || $rootScope.empresaAtiva.id == undefined) {
         $location.path('login');
         return;
     }
@@ -10,9 +10,8 @@ app.controller('pontoCtrl', function ($scope, $rootScope, $location, PontoServic
     $scope.usuarios = [];
 
     var promise = PontoService.selectUsuariosPonto($routeParams.id, $rootScope.empresaAtiva.id);
-    promise.then(function (response) {           
-        $scope.usuarios = response.data[0];    
-        console.log($scope.usuarios);      
+    promise.then(function (response) {
+        $scope.usuarios = response.data[0];
     }, function (error) {
         Materialize.toast('Erro de conexão com o banco', 4000);
     });
