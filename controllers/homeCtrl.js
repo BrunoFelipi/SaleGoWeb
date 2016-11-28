@@ -135,7 +135,7 @@ app.controller('homeCtrl', function ($scope, $rootScope, $location, $route, Pont
                     fillOpacity: 0.35,
                     map: map,
                     center: centro,
-                    radius: Math.sqrt($scope.pontos[ponto].raioAlcance * 1000)
+                    radius: $scope.pontos[ponto].raioAlcance * 13
                 });
                 var content = "<html>" + $scope.pontos[ponto].descricao + '</html>';
                 infowindow = new google.maps.InfoWindow();
