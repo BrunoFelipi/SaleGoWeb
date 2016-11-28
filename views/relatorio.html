@@ -76,19 +76,19 @@
                     <table class="responsive-table striped">
                         <thead>
                             <tr>
-                                <th class="center" data-field="nome">id</th>
-                                <th class="center" data-field="cpf">idCliente</th>
-                                <th class="center" data-field="email">idEmpresa</th>
-                                <th class="center" data-field="email">idPonto</th>
+                                <th class="center" data-field="id">id</th>
+                                <th class="center" data-field="nome">Nome</th>
+                                <th class="center" data-field="cpf">CPF</th>
+                                <th class="center" data-field="email">Email</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             <tr ng-repeat="c in clientes | filter: pesquisa">
                                 <td class="center">{{c.id}}</td>
-                                <td class="center">{{c.idCliente}}</td>
-                                <td class="center">{{c.idEmpresa}}</td>
-                                <td class="center">{{c.idPonto}}</td>
+                                <td class="center">{{c.nome}}</td>
+                                <td class="center">{{c.cpf}}</td>
+                                <td class="center">{{c.email}}</td>
                             </tr>
                         </tbody>
                     </table>

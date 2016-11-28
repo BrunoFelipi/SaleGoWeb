@@ -4,7 +4,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 $idEmpresa = $data['idEmpresa'];
 
-$sql = "SELECT id, idPonto, idEmpresa, idCliente FROM pontospegos where idEmpresa='$idEmpresa' group by idCliente";
+$sql = "SELECT PP.idCliente, C.id, C.nome, C.cpf, C.email  FROM pontospegos PP, cliente C where idEmpresa='$idEmpresa' AND PP.idCliente=C.id group by PP.idCliente";
 
 $rs = mysqli_query($conexao, $sql);
 

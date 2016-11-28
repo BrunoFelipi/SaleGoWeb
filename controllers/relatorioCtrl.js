@@ -14,7 +14,6 @@ app.controller('relatorioCtrl', function($scope, $rootScope, $route, $location, 
     var promise = RelatorioService.carregarPontosPegos($rootScope.empresaAtiva.id);
     promise.then(function(response) {
         $scope.clientes = response.data;
-        console.log($scope.clientes);
     }, function(error) {
         Materialize.toast('Erro de conexão com o banco', 4000);
     });
