@@ -36,7 +36,8 @@ create table pontosPegos(
   idPonto int(8),
   idEmpresa int(8),
   idCliente int(8),
-  dia datetime
+  dia datetime,
+  ativo char(1)
 );
 
 CREATE TABLE  empresa (

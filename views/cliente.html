@@ -14,7 +14,7 @@
     }
 </style>
 
-<div ng-controller="relatorioCtrl">
+<div ng-controller="clienteCtrl">
 
     <header>
         <nav>
@@ -67,13 +67,62 @@
         <form name="formulario">
             <div class="container" style="padding-top: 50px">
                 <div class="row">
+
+                    <div class="col s12 m12 l12 ">
+                        <h5 class="light center">{{cliente[0].nome}}</h5>
+                        <br>
+                        <hr>
+                        <br>
+                    </div>
+
                     <div class="col s6 m6 l6 ">
                         <div class="input-field">
-                            <input id="pesquisa" ng-model="pesquisa" placeholder="Nome, CPF, Email" type="text" class="validate">
+                            <input id="pesquisa" ng-model="pesquisa" placeholder="Endereço, Descrição, Data Vencimento, etc" type="text" class="validate">
                             <label for="pesquisa">Pesquisar</label>
                         </div>
                     </div>
-                    
+
+                    <table class="responsive-table striped">
+                        <thead>
+                            <tr>
+                                <th class="center" data-field="endereco">Endereço</th>
+                                <th class="center" data-field="descricao">Descrição</th>
+                                <th class="center" data-field="tipoDesconto">Tipo Desconto</th>
+                                <th class="center" data-field="valor">Valor</th>
+                                <th class="center" data-field="dataVencimento">Data Vencimento</th>
+                                <th class="center" data-field=""></th>
+                                <th class="center" data-field=""></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr ng-repeat="ponto in pontosCliente | filter: pesquisa">
+                                <td class="center">{{ponto.endereco}}</td>
+                                <td class="center">{{ponto.descricao}}</td>
+                                <td class="center">{{ponto.tipoDesconto}}</td>
+                                <td class="center">{{ponto.valor}}</td>
+                                <td class="center">{{ponto.dataVencimento}}</td>
+                                <td><a class="tooltipped" ng-if="!existInCarrinho(ponto.id)" data-position="bottom" data-tooltip="Adicionar no carrinho" href="" ng-click="addCarrinhoPontos(ponto.id)"><img src="resources/addCarrinho.png" height="26" width="26"></a></td>
+                                <td><a class="tooltipped"  ng-if="existInCarrinho(ponto.id)" data-position="bottom" data-tooltip="Remover do carrinho" href="" ng-click="remCarrinhoPontos(ponto.id)"><img src="resources/remCarrinho.png" height="26" width="26"></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <div>
+                        <a href="#modal1" class="waves-effect modal-trigger waves-light btn blue">Utilizar pontuação</a>
+                    </div>
+
+                    <!-- Modal Structure -->
+                    <div id="modal1" class="modal bottom-sheet">
+                        <div class="modal-content">
+                            <h4>Serão utilizados os seguintes pontos:</h4>                            
+                            <h5 ng-repeat="ponto in carrinhoPontos">{{ponto.}}</h5>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </form>
@@ -89,8 +138,10 @@
 
 $(document).ready(function() {
     $(".button-collapse").sideNav();
-    $('.button-collapse').sideNav('hide');
+    $('.button-collapse').sideNav('hide');    
+    $('.modal-trigger').leanModal();
     $('#pesquisa').focus();
+    $('.tooltipped').tooltip({delay: 50});
 });
 
 </script>

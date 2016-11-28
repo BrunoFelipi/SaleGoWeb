@@ -45,8 +45,6 @@ app.controller('cadastrarPontoCtrl', function ($scope, $rootScope, $route, $loca
         $route.reload();
     }
 
-
-
     $scope.initMap = function () {
 
         var geocoder = new google.maps.Geocoder();
