@@ -102,8 +102,14 @@
                                 <td class="center">{{ponto.tipoDesconto}}</td>
                                 <td class="center">{{ponto.valor}}</td>
                                 <td class="center">{{ponto.dataVencimento}}</td>
-                                <td><a class="tooltipped" ng-if="!existInCarrinho(ponto.idPonto)" data-position="bottom" data-tooltip="Adicionar no carrinho" href="" ng-click="addCarrinhoPontos(ponto.idPonto)"><img src="resources/addCarrinho.png" height="26" width="26"></a></td>
-                                <td><a class="tooltipped"  ng-if="existInCarrinho(ponto.idPonto)" data-position="bottom" data-tooltip="Remover do carrinho  " href="" ng-click="remCarrinhoPontos(ponto.idPonto)"><img src="resources/remCarrinho.png" height="26" width="26"></a></td>
+                                <td>
+                                    <a class="tooltipped" ng-show="!existInCarrinho(ponto.idPonto)" data-position="bottom" data-tooltip="Adicionar no carrinho"
+                                        href="" ng-click="addCarrinhoPontos(ponto.idPonto)"><img src="resources/addCarrinho.png" height="26" width="26"></a>
+                                </td>
+                                <td>
+                                    <a class="tooltipped" ng-show="existInCarrinho(ponto.idPonto)" data-position="bottom" data-tooltip="Remover do carrinho  "
+                                        href="" ng-click="remCarrinhoPontos(ponto.idPonto)"><img src="resources/remCarrinho.png" height="26" width="26"></a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -115,11 +121,47 @@
                     <!-- Modal Structure -->
                     <div id="modal1" class="modal bottom-sheet">
                         <div class="modal-content">
-                            <h4>Serão utilizados os seguintes pontos:</h4>                            
-                            <h5 ng-repeat="ponto in carrinhoPontos">{{ponto.}}</h5>
+
+                            <table class="responsive-table striped">
+                                <thead>
+                                    <tr>
+                                        <th class="center" data-field="endereco">Endereço</th>
+                                        <th class="center" data-field="descricao">Descrição</th>
+                                        <th class="center" data-field="tipoDesconto">Tipo Desconto</th>
+                                        <th class="center" data-field="valor">Valor</th>
+                                        <th class="center" data-field="dataVencimento">Data Vencimento</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr ng-repeat="ponto in carrinhoPontos">
+                                        <td class="center">{{ponto.endereco}}</td>
+                                        <td class="center">{{ponto.descricao}}</td>
+                                        <td class="center">{{ponto.tipoDesconto}}</td>
+                                        <td class="center">{{ponto.valor}}</td>
+                                        <td class="center">{{ponto.dataVencimento}}</td>                                        
+                                    </tr>
+                                    <tr>                                        
+                                        <td class=""><hr></td>
+                                        <td class=""><hr></td>
+                                        <td class=""><hr></td>
+                                        <td class=""><hr></td>
+                                        <td class=""><hr></td>
+                                    </tr>
+                                    <tr>                                    
+                                        <td class="center"></td>
+                                        <td class="center"></td>
+                                        <td class="center">%</td>
+                                        <td class="center">20</td>
+                                        <td class="center"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
                         </div>
                         <div class="modal-footer">
-                            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                            <a href="" ng-click="descontarPontos()" class=" modal-action modal-close waves-effect waves-green btn-flat">Confirmar</a>
+                            <a href="" class=" modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
                         </div>
                     </div>
 
