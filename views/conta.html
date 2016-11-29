@@ -4,7 +4,7 @@
     footer {
         padding-left: 300px;
     }
-
+    
     @media only screen and (max-width: 992px) {
         header,
         main,
@@ -22,8 +22,8 @@
             <ul id="sideNav" class="side-nav fixed">
                 <li>
                     <div class="userView">
-                        <img class="background" src="resources/teal.jpg">
-                        <a href="#/conta"><img class="circle" src="resources/bk1.jpg"></a>
+                        <img class="background" src="resources/bk1.jpg">
+                        <a href="#/conta"><img class="circle" src="resources/logo.png"></a>
                         <a href="#/conta"><span class="white-text name">{{empresaAtiva.nome}}</span></a>
                         <a href="#/conta"><span class="white-text email">{{empresaAtiva.email}}</span></a>
                     </div>
@@ -69,25 +69,19 @@
         <div class="container">
 
             <form style="padding-top: 30px">
-                <div class="row" style="padding-top: 20px">
-                    <div class="input-field col s6">
-                        <input id="nome" ng-model="empresaAtiva.nome" type="text" class="validate">
-                        <label for="nome">Nome</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <input id="email" ng-model="empresaAtiva.email" type="text" class="validate" disabled="">
-                        <label for="email">Email</label>
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12 m12 l12">                                                   
+                            <a href="#modalAlterarSenha" style="width: 100%" class="waves-effect waves-light btn blue modal-trigger">Trocar Senha</a>
+                        </div>
                     </div>
                 </div>
-
-                <a href="#modalAlterarSenha" class="waves-effect waves-light btn teal modal-trigger">Trocar Senha</a>
-
 
                 <!-- Modal Structure -->
                 <div id="modalAlterarSenha" class="modal modal-fixed-footer">
 
                     <div class="modal-content">
-                        <h4 class="teal-text center light">Alterar Senha</h4>
+                        <h4 class="blue-text center light">Alterar Senha</h4>
                         <div class="divider"></div>
 
                         <form>
@@ -113,12 +107,7 @@
                         <a href="" ng-click="closeModal()" class="modal-action red-text waves-effect waves-red btn-flat right">Cancelar</a>
                     </div>
                 </div>
-                <div class="divider"></div>
 
-                <div class="" style="padding-top: 20px">
-                    <button type="submit" class="waves-effect waves-teal btn-flat teal-text center">Alterar</button>
-                    <a href="" ng-click="limparCampos()" class="waves-effect waves-red btn-flat right red-text center">Cancelar</a>
-                </div>
             </form>
 
         </div>
@@ -133,8 +122,8 @@
 
 <script>
 $(document).ready(function(){
-    $( "#email" ).focus();
     $( "#nome" ).focus();
+    $( "#email" ).focus();    
     $('.modal-trigger').leanModal();
     $(".button-collapse").sideNav();
     $('.button-collapse').sideNav('hide');
