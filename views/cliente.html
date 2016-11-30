@@ -103,6 +103,12 @@
                                 <td class="center">{{ponto.valor}}</td>
                                 <td class="center">{{ponto.dataVencimento}}</td>
                                 <td>
+                                    <input type="checkbox" class="filled-in" />
+                                    <label></label>
+                                </td>
+
+                                <!--
+                                <td>
                                     <a class="tooltipped" ng-show="!existInCarrinho(ponto.idPonto)" data-position="bottom" data-tooltip="Adicionar no carrinho"
                                         href="" ng-click="addCarrinhoPontos(ponto.idPonto)"><img src="resources/addCarrinho.png" height="26" width="26"></a>
                                 </td>
@@ -110,6 +116,7 @@
                                     <a class="tooltipped" ng-show="existInCarrinho(ponto.idPonto)" data-position="bottom" data-tooltip="Remover do carrinho  "
                                         href="" ng-click="remCarrinhoPontos(ponto.idPonto)"><img src="resources/remCarrinho.png" height="26" width="26"></a>
                                 </td>
+                                -->
                             </tr>
                         </tbody>
                     </table>
@@ -139,24 +146,12 @@
                                         <td class="center">{{ponto.descricao}}</td>
                                         <td class="center">{{ponto.tipoDesconto}}</td>
                                         <td class="center">{{ponto.valor}}</td>
-                                        <td class="center">{{ponto.dataVencimento}}</td>                                        
-                                    </tr>
-                                    <tr>                                        
-                                        <td class=""><hr></td>
-                                        <td class=""><hr></td>
-                                        <td class=""><hr></td>
-                                        <td class=""><hr></td>
-                                        <td class=""><hr></td>
-                                    </tr>
-                                    <tr>                                    
-                                        <td class="center"></td>
-                                        <td class="center"></td>
-                                        <td class="center">%</td>
-                                        <td class="center">20</td>
-                                        <td class="center"></td>
+                                        <td class="center">{{ponto.dataVencimento}}</td>
                                     </tr>
                                 </tbody>
                             </table>
+
+                            <p>Total de desconto selecionados: <b>{{valorTotalPontos}} %</b></p>
 
                         </div>
                         <div class="modal-footer">
