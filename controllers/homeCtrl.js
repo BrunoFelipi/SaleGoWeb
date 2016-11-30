@@ -1,10 +1,10 @@
 app.controller('homeCtrl', function ($scope, $rootScope, $location, $route, PontoService) {
 
-    if($rootScope.empresaAtiva.id < 1 || $rootScope.empresaAtiva.id == undefined){
+    if ($rootScope.empresaAtiva.id < 1 || $rootScope.empresaAtiva.id == undefined) {
         $location.path('login');
         return;
     }
-    
+
     $scope.empresaAtiva = $rootScope.empresaAtiva;
     $scope.pontos = [];
 
@@ -12,23 +12,32 @@ app.controller('homeCtrl', function ($scope, $rootScope, $location, $route, Pont
     promise.then(function (response) {
 
         if (response.data == 'false') {
-            Materialize.toast('Erro ao deletar os pontos vencidos', 4000);
+            Materialize.toast('Erro ao desativar os pontos vencidos', 4000);
         }
+
+        var promise = PontoService.updatePontosPegosVencidos($scope.empresaAtiva.id);
+        promise.then(function (response) {
+
+            
+
+        }, function (error) {
+            Materialize.toast('Erro de conexão com o banco', 4000);
+        });
 
         var promise = PontoService.selectAll($scope.empresaAtiva.id);
         promise.then(function (response) {
             $scope.pontos = response.data;
-            
-            if(Object.keys($scope.pontos).length == 0){            
+
+            if (Object.keys($scope.pontos).length == 0) {
                 $scope.initMap();
                 return;
             }
-            
-            for (var i = 0; i < $scope.pontos.length; i++) {               
+
+            for (var i = 0; i < $scope.pontos.length; i++) {
                 $scope.idPonto = $scope.pontos[i].id;
                 $scope.getQtdClientesPonto($scope.idPonto);
             }
-            
+
         }, function (error) {
             Materialize.toast('Erro de conexão com o banco', 4000);
         });
@@ -38,7 +47,7 @@ app.controller('homeCtrl', function ($scope, $rootScope, $location, $route, Pont
 
     $scope.getQtdClientesPonto = function (idPonto) {
         var promise = PontoService.getQtdClientesPonto(idPonto);
-        promise.then(function (response) {            
+        promise.then(function (response) {
             $scope.updateQtdClientesPonto(idPonto, response.data[0].qtdIdPonto);
         }, function (error) {
             Materialize.toast('Erro de conexão com o banco', 4000);
@@ -155,7 +164,7 @@ app.controller('homeCtrl', function ($scope, $rootScope, $location, $route, Pont
         }
     }
 
-    $scope.reloadView = function(){
+    $scope.reloadView = function () {
         $route.reload();
     }
 

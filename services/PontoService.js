@@ -1,69 +1,77 @@
-app.factory('PontoService', function($http, $rootScope, $location){
+app.factory('PontoService', function ($http, $rootScope, $location) {
     return {
-        selectAll: function(idEmpresa){
+        selectAll: function (idEmpresa) {
             return $http({
                 method: 'post',
                 url: 'ws/ponto/selectAll.php',
-                data: {idEmpresa: idEmpresa}
+                data: { idEmpresa: idEmpresa }
             });
         },
-        select: function(idPonto){
+        select: function (idPonto) {
             return $http({
                 method: 'post',
                 url: 'ws/ponto/select.php',
-                data: {idPonto: idPonto}
+                data: { idPonto: idPonto }
             });
         },
-        selectQtdClientes: function(idPonto){
+        selectQtdClientes: function (idPonto) {
             return $http({
                 method: 'post',
                 url: 'ws/ponto/select.php',
-                data: {idPonto: idPonto}
+                data: { idPonto: idPonto }
             });
         },
-        getQtdClientesPonto: function(idPonto){
+        getQtdClientesPonto: function (idPonto) {
             return $http({
                 method: 'post',
                 url: 'ws/ponto/selectQtdClientesPonto.php',
-                data: {idPonto: idPonto}
+                data: { idPonto: idPonto }
             });
-        },        
-        updateQtdClientesPonto: function(idPonto, qtdClientes){
+        },
+        updateQtdClientesPonto: function (idPonto, qtdClientes) {
             return $http({
                 method: 'post',
                 url: 'ws/ponto/updatePontoSetQtdCliente.php',
-                data: {idPonto: idPonto, qtdClientes: qtdClientes}
+                data: { idPonto: idPonto, qtdClientes: qtdClientes }
             });
-        },        
-        selectUsuariosPonto: function(idPonto, idEmpresa){
+        },
+        selectUsuariosPonto: function (idPonto, idEmpresa) {
             return $http({
                 method: 'post',
                 url: 'ws/ponto/selectUsuariosPonto.php',
-                data: {idPonto: idPonto, idEmpresa: idEmpresa}
+                data: { idPonto: idPonto, idEmpresa: idEmpresa }
             });
         },
-        ativar: function(idPonto){
+        ativar: function (idPonto) {
             return $http({
                 method: 'post',
                 url: 'ws/ponto/ativar.php',
-                data: {idPonto: idPonto}
+                data: { idPonto: idPonto }
             });
         },
-        desativar: function(idPonto){
+        desativar: function (idPonto) {
             return $http({
                 method: 'post',
                 url: 'ws/ponto/desativar.php',
-                data: {idPonto: idPonto}
+                data: { idPonto: idPonto }
             });
         },
-        updatePontosVencidos: function(idEmpresa){
+        updatePontosVencidos: function (idEmpresa) {
             return $http({
                 method: 'post',
                 url: 'ws/ponto/updatePontosVencidos.php',
-                data: {idEmpresa: idEmpresa}
+                data: { idEmpresa: idEmpresa }
             });
         },
-        insert: function(idEmpresa, latitude, longitude, ponto){
+        updatePontosPegosVencidos: function (idEmpresa) {
+            return $http({
+                method: 'post',
+                url: 'ws/ponto/updatePontosPegosVencidos.php',
+                data: { idEmpresa: idEmpresa }
+            });
+        },
+        
+        insert: function(idEmpresa, latitude, longitude, ponto) {
             ponto.idEmpresa = idEmpresa;
             ponto.latitude = latitude;
             ponto.longitude = longitude;
