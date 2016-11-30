@@ -4,7 +4,7 @@
 
     $idEmpresa = $data['idEmpresa'];
 
-    $sql = "UPDATE pontospegos SET ativo='n' WHERE dataVencimento < NOW() AND idEmpresa = '$idEmpresa'";
+    $sql = "UPDATE pontospegos SET ativo='n' WHERE dia > NOW() AND idEmpresa = '$idEmpresa'";
 
     if(mysqli_query($conexao, $sql)){
         print "true";

@@ -10,7 +10,7 @@ app.controller('clienteCtrl', function ($scope, $rootScope, $location, Relatorio
 
     var promise = RelatorioService.carregarClienteSelecionado($routeParams.id);
     promise.then(function (response) {
-        $scope.cliente = response.data;
+        $scope.cliente = response.data;        
     }, function (error) {
         Materialize.toast('Erro de conexão com o banco', 4000);
     });
@@ -18,6 +18,7 @@ app.controller('clienteCtrl', function ($scope, $rootScope, $location, Relatorio
     var promise = RelatorioService.carregarPontosCliente($routeParams.id);
     promise.then(function (response) {
         $scope.pontosCliente = response.data;
+        console.log($scope.pontosCliente);
     }, function (error) {
         Materialize.toast('Erro de conexão com o banco', 4000);
     });
