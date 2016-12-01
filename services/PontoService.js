@@ -56,6 +56,13 @@ app.factory('PontoService', function ($http, $rootScope, $location) {
                 data: { idPonto: idPonto }
             });
         },
+        desativarPontoPego: function (idPonto, idCliente) {
+            return $http({
+                method: 'post',
+                url: 'ws/ponto/desativarPontoPego.php',
+                data: { idPonto: idPonto, idCliente: idCliente }
+            });
+        },
         updatePontosVencidos: function (idEmpresa) {
             return $http({
                 method: 'post',

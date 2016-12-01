@@ -15,13 +15,14 @@ app.controller('homeCtrl', function($scope, $rootScope, $location, $route, Ponto
             Materialize.toast('Erro ao desativar os pontos vencidos', 4000);
         }
 
+/*
         var promise = PontoService.updatePontosPegosVencidos($scope.empresaAtiva.id);
         promise.then(function(response) {
 
         }, function(error) {
             Materialize.toast('Erro de conexão com o banco', 4000);
         });
-
+*/
         var promise = PontoService.selectAll($scope.empresaAtiva.id);
         promise.then(function(response) {
             $scope.pontos = response.data;
@@ -165,22 +166,5 @@ app.controller('homeCtrl', function($scope, $rootScope, $location, $route, Ponto
     $scope.reloadView = function() {
         $route.reload();
     }
-
-    $scope.redText = function(id) {
-        var promise = PontoService.select(id);
-        promise.then(function(response) {            
-            if(response.data[0].dataVencimento > $filter('date')(new Date(), 'yyyy-MM-dd')){
-                console.log(true);
-                return true;                
-            } else {
-                console.log(false);                
-                return false;
-            }
-        }, function(error) {
-            Materialize.toast('Erro de conexão com o banco', 4000);
-        });
-    }
-
-    $scope.redText(16);
 
 });

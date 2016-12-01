@@ -102,12 +102,8 @@
                                 <td class="center">{{ponto.tipoDesconto}}</td>
                                 <td class="center">{{ponto.valor}}</td>
                                 <td class="center">{{ponto.dataVencimento}}</td>
-                                <td>
-                                    <input type="checkbox" class="filled-in" />
-                                    <label></label>
-                                </td>
-
-                                <!--
+                                <!--<td><input type="checkbox" class="filled-in" id="check" /><label for="check"></label></td>-->
+                                
                                 <td>
                                     <a class="tooltipped" ng-show="!existInCarrinho(ponto.idPonto)" data-position="bottom" data-tooltip="Adicionar no carrinho"
                                         href="" ng-click="addCarrinhoPontos(ponto.idPonto)"><img src="resources/addCarrinho.png" height="26" width="26"></a>
@@ -116,7 +112,7 @@
                                     <a class="tooltipped" ng-show="existInCarrinho(ponto.idPonto)" data-position="bottom" data-tooltip="Remover do carrinho  "
                                         href="" ng-click="remCarrinhoPontos(ponto.idPonto)"><img src="resources/remCarrinho.png" height="26" width="26"></a>
                                 </td>
-                                -->
+                                
                             </tr>
                         </tbody>
                     </table>
@@ -154,7 +150,7 @@
                             <p>Total de desconto selecionado: <b>{{valorTotalPontos}} %</b></p>
 
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer center">
                             <a href="" ng-click="descontarPontos()" class=" modal-action modal-close waves-effect waves-green btn-flat">Confirmar</a>
                             <a href="" class=" modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
                         </div>
@@ -179,6 +175,7 @@ $(document).ready(function() {
     $('.modal-trigger').leanModal();
     $('#pesquisa').focus();
     $('.tooltipped').tooltip({delay: 50});
+    $('select').material_select();
 });
 
 </script>

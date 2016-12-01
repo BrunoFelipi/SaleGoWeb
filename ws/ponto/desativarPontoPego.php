@@ -2,9 +2,10 @@
     include '../conexao.php';
     $data = json_decode(file_get_contents('php://input'), true);
 
-    $idEmpresa = $data['idEmpresa'];
+    $idPonto = $data['idPonto'];
+    $idCliente = $data['idCliente'];
 
-    $sql = "UPDATE pontospegos SET ativo='n' WHERE dia > (SELECT P.dataVencimento FROM ponto P, pontospegos PP WHERE P.id == PP.idPonto) AND idEmpresa = '$idEmpresa'";
+    $sql = "UPDATE pontospegos SET ativo='n' WHERE idPonto = '$idPonto' AND idCliente='$idCliente'";
 
     if(mysqli_query($conexao, $sql)){
         print "true";
